@@ -1,0 +1,567 @@
+.dark-panel {
+    background-image: url("project://database/Assets/Sprites/UI/Dark%20Frame.png?fileID=21300000&guid=dc7175cbe6e1a0842bcde9bb94dde174&type=3#Dark Frame");
+    -unity-slice-type: sliced;
+    -unity-slice-scale: 5px;
+    -unity-slice-left: 5;
+    -unity-slice-top: 5;
+    -unity-slice-right: 5;
+    -unity-slice-bottom: 5;
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.menu-box {
+    flex-grow: 1;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.main-menu {
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-direction: row;
+    min-width: 0;
+    min-height: 0;
+}
+
+.menu-sidebar-instance {
+    width: 30%;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.party-panel-instance {
+    width: 70%;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.menu-sidebar {
+    flex-grow: 1;
+    min-width: 0;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.sidebar-tabs {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.sidebar-button {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 12px;
+    padding-right: 0;
+    padding-bottom: 12px;
+    padding-left: 40px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    -unity-font-definition: url("project://database/Assets/Fonts/PressStart2P-Regular%20SDF%201.asset?fileID=11400000&guid=c96b1d2302bcdc34ca786d342f997dc4&type=2#PressStart2P-Regular SDF 1");
+    -unity-text-align: middle-left;
+    font-size: 30px;
+    color: rgb(242, 226, 226);
+    white-space: normal;
+}
+
+.sidebar-button:focus {
+    color: rgb(255, 255, 255);
+}
+
+.menu-cursor {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -17.5px;
+    width: 20px;
+    height: 35px;
+    background-image: url("project://database/Assets/Sprites/UI/Cursor.png?fileID=-4750761433519615375&guid=294a622a3115f344c97db111133887ba&type=3#Cursor_0");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.sidebar-button:focus .menu-cursor {
+    display: flex;
+}
+
+.party-panel {
+    flex-grow: 1;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.character-card-instance {
+    height: 28%;
+    flex-shrink: 0;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.character-info-card {
+    flex-grow: 1;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 20px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+}
+
+.character-card-content {
+    display: none;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-direction: row;
+    align-items: stretch;
+    min-width: 0;
+    min-height: 0;
+}
+
+.character-portrait {
+    width: 0;
+    height: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.character-details {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.character-details-row {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.character-card-label {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/PressStart2P-Regular%20SDF%201.asset?fileID=11400000&guid=c96b1d2302bcdc34ca786d342f997dc4&type=2#PressStart2P-Regular SDF 1");
+    -unity-text-align: middle-left;
+    font-size: 24px;
+    color: rgb(242, 226, 226);
+    white-space: normal;
+}
+
+.menu-item-label {
+    flex-grow: 1;
+    min-width: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-text-align: middle-left;
+    white-space: normal;
+}
+
+.status-screen-instance {
+    display: none;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+.status-screen {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: column;
+}
+
+.status-tabs {
+    height: 15%;
+    flex-shrink: 0;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.status-tab {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 40px;
+    -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
+    font-size: 30px;
+    color: rgb(242, 226, 226);
+}
+
+.status-tab-selected {
+    color: rgb(255, 255, 255);
+}
+
+.status-tab-selected .menu-cursor {
+    display: flex;
+}
+
+.status-body {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: row;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.status-overview {
+    width: 35%;
+    flex-shrink: 0;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: column;
+}
+
+.status-portrait-host {
+    height: 40%;
+    flex-shrink: 0;
+    min-width: 0;
+    min-height: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-portrait {
+    width: 0;
+    height: 0;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.status-summary {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.status-details {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    margin-left: 15px;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.status-label {
+    min-width: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
+    -unity-text-align: middle-left;
+    font-size: 24px;
+    color: rgb(242, 226, 226);
+    white-space: normal;
+}
+
+.status-summary-label {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 0;
+    margin-bottom: 0;
+}
+
+.status-effects {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.settings-screen-instance {
+    display: none;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+.settings-screen {
+    flex-grow: 1;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.settings-row {
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+    min-height: 70px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    -unity-font-definition: url("project://database/Assets/Fonts/PressStart2P-Regular%20SDF%201.asset?fileID=11400000&guid=c96b1d2302bcdc34ca786d342f997dc4&type=2#PressStart2P-Regular SDF 1");
+    font-size: 30px;
+    color: rgb(242, 226, 226);
+}
+
+.settings-option {
+    width: 35%;
+    flex-shrink: 0;
+    min-width: 0;
+    min-height: 45px;
+    flex-direction: row;
+    padding-left: 40px;
+    align-items: center;
+}
+
+.settings-arrow-column {
+    width: 15%;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-value {
+    width: 35%;
+    flex-shrink: 0;
+    min-width: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+.settings-arrow {
+    visibility: hidden;
+    width: 70px;
+    height: 45px;
+    flex-shrink: 0;
+    background-image: url("project://database/Assets/Sprites/UI/Arrow.png?fileID=21300000&guid=3ab3acb63fe61204083fe16857d04a30&type=3#Arrow");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.settings-arrow-left {
+    scale: -1 1;
+}
+
+.settings-row:focus {
+    color: rgb(255, 255, 255);
+}
+
+.settings-row:focus .menu-cursor {
+    display: flex;
+}
+
+.settings-row:focus .settings-arrow {
+    visibility: visible;
+}
+
+.inventory-screen-instance {
+    display: none;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+.inventory-screen {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: column;
+}
+
+.inventory-tabs {
+    height: 15%;
+    flex-shrink: 0;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.inventory-tab {
+    width: 50%;
+    flex-shrink: 0;
+    min-width: 0;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 40px;
+    -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
+    font-size: 30px;
+    color: rgb(242, 226, 226);
+}
+
+.inventory-tab-selected {
+    color: rgb(255, 255, 255);
+}
+
+.inventory-tab:focus .menu-cursor,
+.inventory-item:focus .menu-cursor {
+    display: flex;
+}
+
+.inventory-body {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.inventory-list {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+.inventory-row {
+    flex-direction: row;
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+.inventory-item {
+    width: 50%;
+    flex-shrink: 0;
+    min-width: 0;
+    min-height: 60px;
+    flex-direction: row;
+    align-items: center;
+    -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
+    font-size: 30px;
+    color: rgb(242, 226, 226);
+}
+
+.inventory-item:focus {
+    color: rgb(255, 255, 255);
+}
+
+.inventory-name {
+    width: 80%;
+    flex-shrink: 0;
+    min-width: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    -unity-text-align: middle-left;
+    white-space: normal;
+}
+
+.inventory-quantity {
+    width: 20%;
+    flex-shrink: 0;
+    min-width: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    -unity-text-align: middle-right;
+    white-space: normal;
+}
+
+.inventory-description {
+    display: none;
+    flex-shrink: 0;
+    min-width: 0;
+    margin-top: 15px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
+    font-size: 24px;
+    color: rgb(242, 226, 226);
+    white-space: normal;
+}

@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="MenuStyles.uss" />
+    <ui:VisualElement name="CharacterInfoCard" class="character-info-card dark-panel">
+        <ui:VisualElement name="CharacterContent" class="character-card-content" picking-mode="Ignore">
+            <ui:Image name="CharacterPortrait" class="character-portrait" picking-mode="Ignore" />
+            <ui:VisualElement class="character-details" picking-mode="Ignore">
+                <ui:VisualElement class="character-details-row" picking-mode="Ignore">
+                    <ui:Label name="CharacterName" class="character-card-label" picking-mode="Ignore" />
+                    <ui:Label name="CharacterClass" class="character-card-label" picking-mode="Ignore" />
+                    <ui:Label name="CharacterLevel" class="character-card-label" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="character-details-row" picking-mode="Ignore">
+                    <ui:Label name="CharacterHealth" class="character-card-label" picking-mode="Ignore" />
+                    <ui:Label name="CharacterMana" class="character-card-label" picking-mode="Ignore" />
+                    <ui:Label name="CharacterExperience" class="character-card-label" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

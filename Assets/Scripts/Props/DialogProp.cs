@@ -4,7 +4,7 @@ using UnityEngine;
 // A prop owns its dialog and optional open/closed appearance.
 public class DialogProp : MonoBehaviour, IPlayerVisible, IInteractable
 {
-    [SerializeField, TextArea] private string dialogLine = "";
+    [SerializeField] private string dialogKey = "";
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite interactedSprite;
@@ -64,7 +64,7 @@ public class DialogProp : MonoBehaviour, IPlayerVisible, IInteractable
 
         dialogCompletion = CompleteDialog;
 
-        if (!dialogService.TryShowDialog(dialogLine, dialogCompletion))
+        if (!dialogService.TryShowDialog(dialogKey, dialogCompletion))
         {
             CompleteDialog();
 

@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GameText_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 9b7dcc403fc75b54086206fa07c337ae, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 3758444544
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3838136320
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3842330624
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3842330625
+    m_Localized: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524928
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524929
+    m_Localized: Darius
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524930
+    m_Localized: Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524931
+    m_Localized: Level {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524932
+    m_Localized: HP {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524933
+    m_Localized: MP {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524934
+    m_Localized: XP {0}/{1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524935
+    m_Localized: Level {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524936
+    m_Localized: 'Class: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524937
+    m_Localized: 'HP: {0}/{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524938
+    m_Localized: 'MP: {0}/{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524939
+    m_Localized: 'XP: {0}/{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524940
+    m_Localized: 'Stamina: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524941
+    m_Localized: 'Intellect: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524942
+    m_Localized: Empty... I should put something in there already.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524943
+    m_Localized: I need to decide what to wear. They said it would be freezing today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524944
+    m_Localized: Oh! What's this?! How strange...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524945
+    m_Localized: Locked.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407843827712
+    m_Localized: Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742272
+    m_Localized: Key Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742273
+    m_Localized: Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742274
+    m_Localized: A small vial of healing liquid. Restores 50 health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742275
+    m_Localized: Long Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742276
+    m_Localized: A sword with a long, straight blade.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742277
+    m_Localized: Bronze Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742278
+    m_Localized: An old bronze key.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

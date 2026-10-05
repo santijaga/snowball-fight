@@ -18,4 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cathedral_North_West_Closet.unity
     guid: 9c48fadddb5a9e94eadf945c494fd789
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: f47bd6e0e56a56e43969aea60a9dfaa9, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    com.unity.localization.settings: {fileID: 11400000, guid: b2a48e165fa04ff45b989b676d01ab3e, type: 2}

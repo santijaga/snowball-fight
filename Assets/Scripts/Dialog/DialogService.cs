@@ -54,9 +54,10 @@ public class DialogService : MonoBehaviour
         }
     }
 
-    public bool TryShowDialog(string line, Action onCompleted = null)
+    // dialogKey refers to an entry in the official GameText String Tables.
+    public bool TryShowDialog(string dialogKey, Action onCompleted = null)
     {
-        if (CantShowDialog())
+        if (CantShowDialog() || !GameLocalization.IsReady || string.IsNullOrWhiteSpace(dialogKey))
         {
 
             return false;
@@ -78,7 +79,7 @@ public class DialogService : MonoBehaviour
 
             dialogContextHandle = context;
 
-            if (!dialogView.Show(line))
+            if (!dialogView.Show(dialogKey))
             {
                 HideDialog();
             }

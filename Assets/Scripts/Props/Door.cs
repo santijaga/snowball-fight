@@ -11,7 +11,7 @@ public class Door : MonoBehaviour, IPlayerVisible, IInteractable
 
     [Header("Locked Door Dialog")]
     [SerializeField] private bool showLockedDialog;
-    [SerializeField, TextArea] private string lockedDialogLine = "";
+    [SerializeField] private string lockedDialogKey = "";
     [SerializeField] private DialogService lockedDialogService;
 
     private bool isOpened;
@@ -76,7 +76,7 @@ public class Door : MonoBehaviour, IPlayerVisible, IInteractable
     public bool TryInteract()
     {
         if (!isActiveAndEnabled || !isLocked || isOpened || !showLockedDialog
-            || string.IsNullOrWhiteSpace(lockedDialogLine) || dialogCompletion != null
+            || string.IsNullOrWhiteSpace(lockedDialogKey) || dialogCompletion != null
             || lockedDialogService == null)
         {
 
@@ -86,7 +86,7 @@ public class Door : MonoBehaviour, IPlayerVisible, IInteractable
         activeDialogService = lockedDialogService;
         dialogCompletion = CompleteDialog;
 
-        if (!activeDialogService.TryShowDialog(lockedDialogLine, dialogCompletion))
+        if (!activeDialogService.TryShowDialog(lockedDialogKey, dialogCompletion))
         {
             CompleteDialog();
 

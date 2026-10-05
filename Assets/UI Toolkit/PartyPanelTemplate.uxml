@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:Template name="CharacterInfoCard" src="project://database/Assets/UI%20Toolkit/CharacterInfoCardTemplate.uxml?fileID=9197481963319205126&amp;guid=0c57629b66760874eb09c46ce899ebd8&amp;type=3#CharacterInfoCardTemplate" />
+    <Style src="MenuStyles.uss" />
+    <ui:VisualElement name="PartyPanel" class="party-panel dark-panel">
+        <ui:Instance template="CharacterInfoCard" name="CharacterInfoCard1" class="character-card-instance" />
+        <ui:Instance template="CharacterInfoCard" name="CharacterInfoCard2" class="character-card-instance" />
+        <ui:Instance template="CharacterInfoCard" name="CharacterInfoCard3" class="character-card-instance" />
+    </ui:VisualElement>
+</ui:UXML>

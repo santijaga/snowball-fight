@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="MenuStyles.uss" />
+    <ui:VisualElement name="StatusScreen" class="status-screen" picking-mode="Ignore">
+        <ui:VisualElement class="status-tabs dark-panel" picking-mode="Ignore">
+            <ui:VisualElement name="StatusTab1" class="status-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label name="StatusTabName" class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="StatusTab2" class="status-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label name="StatusTabName" class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="StatusTab3" class="status-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label name="StatusTabName" class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="status-body dark-panel" picking-mode="Ignore">
+            <ui:VisualElement class="status-overview" picking-mode="Ignore">
+                <ui:VisualElement name="StatusPortraitHost" class="status-portrait-host" picking-mode="Ignore">
+                    <ui:Image name="StatusPortrait" class="status-portrait" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="status-summary dark-panel" picking-mode="Ignore">
+                    <ui:Label name="StatusLevel" class="status-label status-summary-label" picking-mode="Ignore" />
+                    <ui:Label name="StatusClass" class="status-label status-summary-label" picking-mode="Ignore" />
+                    <ui:Label name="StatusHealth" class="status-label status-summary-label" picking-mode="Ignore" />
+                    <ui:Label name="StatusMana" class="status-label status-summary-label" picking-mode="Ignore" />
+                    <ui:Label name="StatusExperience" class="status-label status-summary-label" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="status-details dark-panel" picking-mode="Ignore">
+                <ui:Label name="StatusStamina" class="status-label" picking-mode="Ignore" />
+                <ui:Label name="StatusIntellect" class="status-label" picking-mode="Ignore" />
+                <ui:VisualElement name="StatusEffects" class="status-effects" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

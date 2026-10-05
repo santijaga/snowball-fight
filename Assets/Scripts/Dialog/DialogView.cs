@@ -11,7 +11,7 @@ public class DialogView : MonoBehaviour
 
     private Label dialogLabel;
     private UIService uiService;
-    private string currentText;
+    private string currentKey;
     public bool IsOpen { get; private set; }
     public bool IsReady => dialogBox != null && dialogLabel != null;
     public event Action Hidden;
@@ -19,12 +19,14 @@ public class DialogView : MonoBehaviour
     private void OnEnable()
     {
         panelRenderer = GetComponent<PanelRenderer>();
+        GameLocalization.Changed += RefreshText;
         panelRenderer.RegisterUIReloadCallback(OnUIReload);
     }
 
     private void OnDisable()
     {
         Hide();
+        GameLocalization.Changed -= RefreshText;
 
         if (panelRenderer != null)
         {
@@ -47,20 +49,22 @@ public class DialogView : MonoBehaviour
             return;
         }
 
-        dialogLabel.text = currentText;
+        dialogLabel.enableRichText = false;
+        RefreshText();
         dialogBox.style.display = IsOpen ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
-    public bool Show(string text)
+    public bool Show(string dialogKey)
     {
-        if (!isActiveAndEnabled || !IsReady || UIService.Instance == null)
+        if (!isActiveAndEnabled || !IsReady || UIService.Instance == null || !GameLocalization.IsReady
+            || string.IsNullOrWhiteSpace(dialogKey))
         {
 
             return false;
         }
 
-        currentText = text;
-        dialogLabel.text = currentText;
+        currentKey = dialogKey;
+        RefreshText();
         dialogBox.style.display = DisplayStyle.Flex;
         IsOpen = true;
         uiService = UIService.Instance;
@@ -71,6 +75,8 @@ public class DialogView : MonoBehaviour
 
     public void Hide()
     {
+        currentKey = null;
+
         if (dialogBox != null)
         {
             dialogBox.style.display = DisplayStyle.None;
@@ -91,5 +97,13 @@ public class DialogView : MonoBehaviour
 
         uiService = null;
         Hidden?.Invoke();
+    }
+
+    private void RefreshText()
+    {
+        if (isActiveAndEnabled && IsReady)
+        {
+            dialogLabel.text = GameLocalization.Text(currentKey);
+        }
     }
 }

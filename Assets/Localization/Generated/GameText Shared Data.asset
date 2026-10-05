@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: GameText Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: GameText
+  m_TableCollectionNameGuidString: 9b7dcc403fc75b54086206fa07c337ae
+  m_Entries:
+  - m_Id: 3758444544
+    m_Key: menu.status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3838136320
+    m_Key: menu.settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3842330624
+    m_Key: settings.language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3842330625
+    m_Key: language.russian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524928
+    m_Key: language.english
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524929
+    m_Key: character.darius.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524930
+    m_Key: class.warrior.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524931
+    m_Key: party.level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524932
+    m_Key: party.health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524933
+    m_Key: party.mana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524934
+    m_Key: party.experience
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524935
+    m_Key: status.level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524936
+    m_Key: status.class
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524937
+    m_Key: status.health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524938
+    m_Key: status.mana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524939
+    m_Key: status.experience
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524940
+    m_Key: status.stamina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524941
+    m_Key: status.intellect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524942
+    m_Key: dialog.cabinet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524943
+    m_Key: dialog.closet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524944
+    m_Key: dialog.secret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3846524945
+    m_Key: dialog.door.locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407843827712
+    m_Key: menu.inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742272
+    m_Key: inventory.key_items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742273
+    m_Key: item.potion.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742274
+    m_Key: item.potion.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742275
+    m_Key: item.long_sword.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742276
+    m_Key: item.long_sword.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742277
+    m_Key: item.bronze_key.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70407906742278
+    m_Key: item.bronze_key.description
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2258744453936971881
+  references:
+    version: 2
+    RefIds:
+    - rid: 2258744453936971881
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1791202579020

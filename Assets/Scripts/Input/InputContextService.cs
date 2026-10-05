@@ -129,6 +129,10 @@ public class InputContextService : MonoBehaviour
                 Actions.Dialog.Enable();
                 break;
 
+            case InputContext.UI:
+                Actions.UI.Enable();
+                break;
+
             default:
                 throw new ArgumentOutOfRangeException(
                     nameof(context),
@@ -150,6 +154,7 @@ public class InputContextService : MonoBehaviour
 
         Actions.Player.Disable();
         Actions.Dialog.Disable();
+        Actions.UI.Disable();
     }
 
     private sealed class InputContextHandle : IDisposable

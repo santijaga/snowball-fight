@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b534a600dd480aad4ab5520af4de0e, type: 3}
+  m_Name: Darius
+  m_EditorClassIdentifier: 
+  characterNameKey: character.darius.name
+  characterClass: {fileID: 11400000, guid: a582d831f39e4ab0874397133170ec8b, type: 2}
+  initialLevel: 1
+  portrait: {fileID: 2382543463544445115, guid: 491aed9ee41b3044db810dfd979c0dca, type: 3}

@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="MenuStyles.uss" />
+    <ui:VisualElement name="SettingsScreen" class="settings-screen" picking-mode="Ignore">
+        <ui:VisualElement name="LanguageSetting" class="settings-row" focusable="true" tabindex="-1" picking-mode="Ignore">
+            <ui:VisualElement class="settings-option" picking-mode="Ignore">
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                <ui:Label name="LanguageSettingLabel" class="menu-item-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement class="settings-arrow-column" picking-mode="Ignore">
+                <ui:VisualElement class="settings-arrow settings-arrow-left" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:Label name="LanguageSettingValue" class="settings-value" picking-mode="Ignore" />
+            <ui:VisualElement class="settings-arrow-column" picking-mode="Ignore">
+                <ui:VisualElement class="settings-arrow" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

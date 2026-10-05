@@ -1,5 +1,6 @@
 public enum InputContext
 {
     Player,
-    Dialog
+    Dialog,
+    UI
 }

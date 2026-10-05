@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c338bcf9af4d04b069ac52cec3d901, type: 3}
+  m_Name: Warrior
+  m_EditorClassIdentifier: 
+  classNameKey: class.warrior.name
+  levels:
+  - stamina: 5
+    intellect: 1
+  - stamina: 6
+    intellect: 1
+  - stamina: 7
+    intellect: 2
+  - stamina: 8
+    intellect: 2
+  - stamina: 8
+    intellect: 3
+  - stamina: 9
+    intellect: 3
+  - stamina: 10
+    intellect: 3
+  - stamina: 11
+    intellect: 4
+  - stamina: 12
+    intellect: 4
+  - stamina: 13
+    intellect: 5
+  - stamina: 14
+    intellect: 5
+  - stamina: 15
+    intellect: 5
+  - stamina: 15
+    intellect: 6
+  - stamina: 16
+    intellect: 6
+  - stamina: 17
+    intellect: 7
+  - stamina: 18
+    intellect: 7
+  - stamina: 19
+    intellect: 7
+  - stamina: 20
+    intellect: 8
+  - stamina: 21
+    intellect: 8
+  - stamina: 21
+    intellect: 9
+  - stamina: 22
+    intellect: 9
+  - stamina: 23
+    intellect: 9
+  - stamina: 24
+    intellect: 10
+  - stamina: 25
+    intellect: 10
+  - stamina: 26
+    intellect: 11
+  - stamina: 27
+    intellect: 11
+  - stamina: 28
+    intellect: 11
+  - stamina: 28
+    intellect: 12
+  - stamina: 29
+    intellect: 12
+  - stamina: 30
+    intellect: 13
+  - stamina: 31
+    intellect: 13
+  - stamina: 32
+    intellect: 13
+  - stamina: 33
+    intellect: 14
+  - stamina: 34
+    intellect: 14
+  - stamina: 34
+    intellect: 15
+  - stamina: 35
+    intellect: 15
+  - stamina: 36
+    intellect: 15
+  - stamina: 37
+    intellect: 16
+  - stamina: 38
+    intellect: 16
+  - stamina: 39
+    intellect: 17
+  - stamina: 40
+    intellect: 17
+  - stamina: 41
+    intellect: 17
+  - stamina: 41
+    intellect: 18
+  - stamina: 42
+    intellect: 18
+  - stamina: 43
+    intellect: 19
+  - stamina: 44
+    intellect: 19
+  - stamina: 45
+    intellect: 19
+  - stamina: 46
+    intellect: 20
+  - stamina: 47
+    intellect: 20
+  - stamina: 48
+    intellect: 20
+  - stamina: 48
+    intellect: 21
+  - stamina: 49
+    intellect: 21
+  - stamina: 50
+    intellect: 22
+  - stamina: 51
+    intellect: 22
+  - stamina: 52
+    intellect: 22
+  - stamina: 53
+    intellect: 23
+  - stamina: 54
+    intellect: 23
+  - stamina: 54
+    intellect: 24
+  - stamina: 55
+    intellect: 24
+  - stamina: 56
+    intellect: 24
+  - stamina: 57
+    intellect: 25
+  - stamina: 58
+    intellect: 25
+  - stamina: 59
+    intellect: 26
+  - stamina: 60
+    intellect: 26
+  - stamina: 61
+    intellect: 26
+  - stamina: 61
+    intellect: 27
+  - stamina: 62
+    intellect: 27
+  - stamina: 63
+    intellect: 28
+  - stamina: 64
+    intellect: 28
+  - stamina: 65
+    intellect: 28
+  - stamina: 66
+    intellect: 29
+  - stamina: 67
+    intellect: 29
+  - stamina: 67
+    intellect: 30
+  - stamina: 68
+    intellect: 30
+  - stamina: 69
+    intellect: 30
+  - stamina: 70
+    intellect: 31
+  - stamina: 71
+    intellect: 31
+  - stamina: 72
+    intellect: 32
+  - stamina: 73
+    intellect: 32
+  - stamina: 74
+    intellect: 32
+  - stamina: 74
+    intellect: 33
+  - stamina: 75
+    intellect: 33
+  - stamina: 76
+    intellect: 34
+  - stamina: 77
+    intellect: 34
+  - stamina: 78
+    intellect: 34
+  - stamina: 79
+    intellect: 35
+  - stamina: 80
+    intellect: 35
+  - stamina: 80
+    intellect: 36
+  - stamina: 81
+    intellect: 36
+  - stamina: 82
+    intellect: 36
+  - stamina: 83
+    intellect: 37
+  - stamina: 84
+    intellect: 37
+  - stamina: 85
+    intellect: 38
+  - stamina: 86
+    intellect: 38
+  - stamina: 87
+    intellect: 38
+  - stamina: 87
+    intellect: 39
+  - stamina: 88
+    intellect: 39
+  - stamina: 89
+    intellect: 40
+  - stamina: 90
+    intellect: 40

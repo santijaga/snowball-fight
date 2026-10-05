@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="MenuStyles.uss" />
+    <ui:VisualElement name="InventoryScreen" class="inventory-screen" picking-mode="Ignore">
+        <ui:VisualElement class="inventory-tabs dark-panel" picking-mode="Ignore">
+            <ui:VisualElement name="InventoryTab" class="inventory-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="KeyItemsTab" class="inventory-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="inventory-body dark-panel" picking-mode="Ignore">
+            <ui:ScrollView name="InventoryList" class="inventory-list" mode="Vertical" picking-mode="Ignore" />
+            <ui:Label name="InventoryDescription" class="inventory-description dark-panel" picking-mode="Ignore" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
