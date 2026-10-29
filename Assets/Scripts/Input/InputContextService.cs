@@ -1,10 +1,39 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(-100)]
 public class InputContextService : MonoBehaviour
 {
+    public enum DeviceScheme { KeyboardAndMouse, Gamepad }
+
+    private static InputDevice lastUsedDevice;
+
+    public DeviceScheme ActiveDeviceScheme
+    {
+        get
+        {
+            if (lastUsedDevice != null && lastUsedDevice.added)
+            {
+
+                return lastUsedDevice is Gamepad ? DeviceScheme.Gamepad : DeviceScheme.KeyboardAndMouse;
+            }
+
+            // Before the first command, prefer the keyboard when both device types are present.
+
+            return Gamepad.all.Count > 0 && Keyboard.current == null && Mouse.current == null
+                ? DeviceScheme.Gamepad
+                : DeviceScheme.KeyboardAndMouse;
+        }
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetDeviceScheme()
+    {
+        lastUsedDevice = null;
+    }
+
     [SerializeField]
     private InputContext initialContext = InputContext.Player;
     public static InputContextService Instance { get; private set; }
@@ -37,12 +66,92 @@ public class InputContextService : MonoBehaviour
 
     private void OnEnable()
     {
+        if (Actions == null)
+        {
+
+            return;
+        }
+
+        Actions.Player.Get().actionTriggered += TrackDevice;
+        Actions.UI.Get().actionTriggered += TrackDevice;
+        Actions.Dialog.Get().actionTriggered += TrackDevice;
         RefreshActiveContext();
     }
 
     private void OnDisable()
     {
+        if (Actions != null)
+        {
+            Actions.Player.Get().actionTriggered -= TrackDevice;
+            Actions.UI.Get().actionTriggered -= TrackDevice;
+            Actions.Dialog.Get().actionTriggered -= TrackDevice;
+        }
+
         DisableAllContexts();
+    }
+
+    private void TrackDevice(InputAction.CallbackContext context)
+    {
+        if (!isActiveAndEnabled || !context.performed)
+        {
+
+            return;
+        }
+
+        InputDevice device = context.control?.device;
+
+        if (!(device is Keyboard) && !(device is Mouse) && !(device is Gamepad))
+        {
+
+            return;
+        }
+
+        // Track the commands handled by this game; automatic pointer/navigation events do not count.
+        if (context.action.actionMap == Actions.UI.Get())
+        {
+            switch (context.action.name)
+            {
+                case "Up":
+                case "Down":
+                case "Left":
+                case "Right":
+                case "Select":
+                case "Back":
+                    break;
+                default:
+
+                    return;
+            }
+        }
+        else if (context.action.actionMap == Actions.Player.Get())
+        {
+            switch (context.action.name)
+            {
+                case "Move":
+                    if (context.ReadValue<Vector2>().sqrMagnitude <= 0f)
+                    {
+
+                        return;
+                    }
+
+                    break;
+                case "Interact":
+                case "Open Menu":
+                case "Next Character":
+                case "Previous Character":
+                    break;
+                default:
+
+                    return;
+            }
+        }
+        else if (context.action.name != "Continue")
+        {
+
+            return;
+        }
+
+        lastUsedDevice = device;
     }
 
     private void OnDestroy()

@@ -15,8 +15,10 @@ public sealed class StatusPanelView : MonoBehaviour
     private Label health;
     private Label mana;
     private Label experience;
-    private Label stamina;
     private Label intellect;
+    private Label strength;
+    private Label agility;
+    private Label damage;
     private readonly VisualElement[] tabs = new VisualElement[PartyRules.MaximumMembers];
     private readonly Label[] tabNames = new Label[PartyRules.MaximumMembers];
     private IVisualElementScheduledItem pendingFocus;
@@ -70,12 +72,14 @@ public sealed class StatusPanelView : MonoBehaviour
         health = screen?.Q<Label>("StatusHealth");
         mana = screen?.Q<Label>("StatusMana");
         experience = screen?.Q<Label>("StatusExperience");
-        stamina = screen?.Q<Label>("StatusStamina");
         intellect = screen?.Q<Label>("StatusIntellect");
+        strength = screen?.Q<Label>("StatusStrength");
+        agility = screen?.Q<Label>("StatusAgility");
+        damage = screen?.Q<Label>("StatusDamage");
 
         if (screen == null || portraitHost == null || portrait == null || level == null
             || characterClass == null || health == null || mana == null || experience == null
-            || stamina == null || intellect == null)
+            || intellect == null || strength == null || agility == null || damage == null)
         {
             Debug.LogError("StatusPanelView requires the complete StatusScreen template.", this);
 
@@ -95,7 +99,7 @@ public sealed class StatusPanelView : MonoBehaviour
             }
         }
 
-        foreach (Label label in new[] { level, characterClass, health, mana, experience, stamina, intellect })
+        foreach (Label label in new[] { level, characterClass, health, mana, experience, intellect, strength, agility, damage })
         {
             label.enableRichText = false;
         }
@@ -216,15 +220,34 @@ public sealed class StatusPanelView : MonoBehaviour
         mana.text = selectedMember == null ? string.Empty : GameLocalization.Text("status.mana", selectedMember.CurrentMana, selectedMember.MaximumMana);
         experience.text = selectedMember == null ? string.Empty
             : GameLocalization.Text("status.experience", selectedMember.Experience, selectedMember.ExperienceToNextLevel);
-        stamina.text = selectedMember == null ? string.Empty
-            : GameLocalization.Text("status.stamina", selectedMember.CurrentStamina, selectedMember.BaseStamina);
-        intellect.text = selectedMember == null ? string.Empty
-            : GameLocalization.Text("status.intellect", selectedMember.CurrentIntellect, selectedMember.BaseIntellect);
+        SetStatLabel(intellect, "status.intellect", selectedMember?.CurrentIntellect, selectedMember?.BaseIntellect);
+        SetStatLabel(strength, "status.strength", selectedMember?.CurrentStrength, selectedMember?.BaseStrength);
+        SetStatLabel(agility, "status.agility", selectedMember?.CurrentAgility, selectedMember?.BaseAgility);
+        damage.text = selectedMember == null ? string.Empty
+            : GameLocalization.Text("status.damage", selectedMember.Damage);
 
         if (IsShown && (previousIndex != selectedIndex || !ReferenceEquals(previousMember, selectedMember)))
         {
             FocusSelectedTab();
         }
+    }
+
+    private static void SetStatLabel(Label label, string key, int? current, int? baseline)
+    {
+        label.enableRichText = true;
+        label.style.color = Color.white;
+
+        if (!current.HasValue || !baseline.HasValue)
+        {
+            label.text = string.Empty;
+
+            return;
+        }
+
+        string color = current.Value > baseline.Value ? "#00FF00"
+            : current.Value < baseline.Value ? "#FF0000" : "#FFFFFF";
+        string value = $"<color={color}>{current.Value}</color>";
+        label.text = GameLocalization.Text(key, value);
     }
 
     private void FocusSelectedTab()

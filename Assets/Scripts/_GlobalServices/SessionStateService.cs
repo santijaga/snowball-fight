@@ -13,6 +13,28 @@ public sealed class SessionStateService : MonoBehaviour
     public string TargetTransitionId { get; private set; }
     public string TargetScene { get; private set; }
 
+    private readonly HashSet<string> recruitedNpcs = new(StringComparer.Ordinal);
+
+    public bool IsNpcRecruited(string id) => !string.IsNullOrWhiteSpace(id) && recruitedNpcs.Contains(id);
+
+    public void MarkNpcRecruited(string id)
+    {
+        if (isActiveAndEnabled && !string.IsNullOrWhiteSpace(id))
+        {
+            recruitedNpcs.Add(id);
+        }
+    }
+
+    public PartyMember ControlledMember { get; private set; }
+
+    public void SetControlledMember(PartyMember member)
+    {
+        if (isActiveAndEnabled)
+        {
+            ControlledMember = member;
+        }
+    }
+
     private TransitionPoint transitionOwner;
     private bool transitionInProgress;
     private string savedPreviousSceneName;
@@ -61,6 +83,8 @@ public sealed class SessionStateService : MonoBehaviour
 
     public void ResetSession()
     {
+        recruitedNpcs.Clear();
+        ControlledMember = null;
         PreviousSceneName = null;
         PreviousSceneId = null;
         SourceTransitionId = null;
@@ -121,11 +145,10 @@ public sealed class SessionStateService : MonoBehaviour
             return;
         }
 
-        if (player == null || !player.TryGetComponent(out PlayerMovementController movement)
-            || !movement.isActiveAndEnabled || !player.TryGetComponent(out PlayerController controller)
+        if (player == null || !player.TryGetComponent(out PlayerController controller)
             || !controller.isActiveAndEnabled)
         {
-            Debug.LogError("Session spawn requires an active player with movement and player controllers.", this);
+            Debug.LogError("Session spawn requires an active PlayerController.", this);
             ClearPendingTransition();
 
             return;
@@ -204,8 +227,7 @@ public sealed class SessionStateService : MonoBehaviour
         }
 
         // TeleportTo never raises StepComplete, including when the offset is zero.
-        movement.TeleportTo(position);
-        controller.SetFacingDirection(facing);
+        controller.TeleportTo(position, facing);
         ClearPendingTransition();
     }
 

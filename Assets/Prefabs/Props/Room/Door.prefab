@@ -236,3 +236,7 @@ MonoBehaviour:
   openedSprite: {fileID: 473574631, guid: c28f7b43570b40d45a19e3176e55e160, type: 3}
   blocker: {fileID: 0}
   isLocked: 0
+  resetOpenOnSceneReload: 1
+  doorId: 
+  unlockItem: {fileID: 0}
+  consumeUnlockItem: 0

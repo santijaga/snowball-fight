@@ -1,40 +1,90 @@
 using System;
 using UnityEngine;
 
-[
-    RequireComponent(
-        typeof(PlayerMovementController),
-        typeof(PlayerAnimationController),
-        typeof(PlayerInteractionsController)
-    )
-]
-public class PlayerController : MonoBehaviour
+[DisallowMultipleComponent]
+[RequireComponent(typeof(PartyFormation))]
+public sealed class PlayerController : MonoBehaviour
 {
     [Min(0f)] public float bufferTime = 0.5f;
     [Min(0f)] public float holdRepeatDelay = 0.2f;
 
-    private PlayerMovementController movementController;
-    private PlayerAnimationController animationController;
-    private PlayerInteractionsController interactionController;
-
-    // Direction of the last accepted step; preserved while idle.
-    private Vector2 targetDirection = Vector2.zero;
-
-    // One pending command and the input observed in the previous frame.
-    private Vector2 bufferedInput = Vector2.zero;
-    private Vector2 previousInput = Vector2.zero;
-
+    private PartyFormation formation;
+    private InputContextService inputService;
+    private InputSystem_Actions.PlayerActions input;
+    private Vector2 bufferedInput;
+    private Vector2 previousInput;
     private float bufferTimer;
     private float holdRepeatDelayTimer;
-
-    private InputSystem_Actions.PlayerActions input;
     private int controlsLockCount;
+    private int pendingSwitchOffset;
+
+    public Character ActiveCharacter => formation != null ? formation.ActiveCharacter : null;
+    public event Action<Vector2> StepComplete;
+
+    private bool CanControl => isActiveAndEnabled && formation != null && formation.isActiveAndEnabled
+        && inputService != null
+        && inputService.isActiveAndEnabled && input.enabled && controlsLockCount == 0
+        && (UIService.Instance == null || !UIService.Instance.HasOpenUI)
+        && ActiveCharacter != null && ActiveCharacter.isActiveAndEnabled;
+
+    private void Awake()
+    {
+        formation = GetComponent<PartyFormation>();
+    }
+
+    private void OnEnable()
+    {
+        formation = GetComponent<PartyFormation>();
+        formation.StepComplete += OnStepComplete;
+        formation.ActiveCharacterChanged += OnActiveCharacterChanged;
+        BindInput();
+    }
+
+    private void BindInput()
+    {
+        if (inputService != null)
+        {
+            inputService.ContextChanged -= OnInputContextChanged;
+        }
+
+        inputService = InputContextService.Instance;
+
+        if (inputService != null && inputService.Actions != null)
+        {
+            input = inputService.Actions.Player;
+            inputService.ContextChanged += OnInputContextChanged;
+        }
+
+        ClearCommands();
+    }
+
+    private void OnInputContextChanged(InputContext context)
+    {
+        if (context != InputContext.Player)
+        {
+            ClearCommands();
+            ActiveCharacter?.ClearFocus();
+        }
+    }
+
+    private void OnActiveCharacterChanged()
+    {
+        ClearCommands();
+    }
+
+    private void OnStepComplete(Vector2 position)
+    {
+        if (isActiveAndEnabled)
+        {
+            StepComplete?.Invoke(position);
+        }
+    }
 
     public IDisposable BlockControls()
     {
         controlsLockCount++;
-        ClearMovementInput();
-        interactionController.ClearFocus();
+        ClearCommands();
+        ActiveCharacter?.ClearFocus();
 
         return new ControlsLock(this);
     }
@@ -52,19 +102,12 @@ public class PlayerController : MonoBehaviour
         {
             if (owner != null)
             {
-                owner.controlsLockCount--;
-                owner.ClearMovementInput();
+                owner.controlsLockCount = Mathf.Max(0, owner.controlsLockCount - 1);
+                owner.ClearCommands();
             }
 
             owner = null;
         }
-    }
-
-    private void Awake()
-    {
-        movementController = GetComponent<PlayerMovementController>();
-        animationController = GetComponent<PlayerAnimationController>();
-        interactionController = GetComponent<PlayerInteractionsController>();
     }
 
     public void SetFacingDirection(Vector2 direction)
@@ -83,79 +126,81 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        targetDirection = direction;
-        ClearMovementInput();
-        interactionController.ClearFocus();
-        animationController.SetAnimationParameters(targetDirection, movementController.IsMoving);
+        formation.EnsureInitialized();
+        ActiveCharacter?.SetFacingDirection(direction);
+        ActiveCharacter?.ClearFocus();
+        ClearCommands();
     }
 
-    private void Start()
+    public void TeleportTo(Vector3 position, Vector2 facing)
     {
-        input = InputContextService.Instance.Actions.Player;
-        InputContextService.Instance.ContextChanged += OnInputContextChanged;
-    }
-
-    private void OnDestroy()
-    {
-        if (InputContextService.Instance != null)
+        if (!isActiveAndEnabled)
         {
-            InputContextService.Instance.ContextChanged -= OnInputContextChanged;
-        }
-    }
-
-    private void OnInputContextChanged(InputContext context)
-    {
-        if (context != InputContext.Player)
-        {
-            ClearMovementInput();
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (interactionController != null)
-        {
-            interactionController.ClearFocus();
-        }
-
-        ClearMovementInput();
-    }
-
-    private void ClearMovementInput()
-    {
-        ClearBuffer();
-        previousInput = Vector2.zero;
-        holdRepeatDelayTimer = 0f;
-    }
-
-    private void Update()
-    {
-        HandleMovement();
-
-        interactionController.Scan(targetDirection);
-
-        HandleInteractions();
-
-        animationController.SetAnimationParameters(
-            targetDirection,
-            movementController.IsMoving
-        );
-    }
-
-    private void HandleMovement()
-    {
-        if (controlsLockCount > 0 || !input.enabled || (UIService.Instance != null && UIService.Instance.HasOpenUI))
-        {
-            ClearMovementInput();
 
             return;
         }
 
-        float deltaTime = Time.deltaTime;
+        formation.TeleportTo(position, facing);
+        ClearCommands();
+    }
 
+    public bool TrySwitchCharacter(int offset)
+    {
+        if (!CanControl || formation.IsMoving)
+        {
+
+            return false;
+        }
+
+        return formation.TrySwitch(offset);
+    }
+
+    private void Update()
+    {
+        if (inputService != InputContextService.Instance)
+        {
+            BindInput();
+        }
+
+        formation.EnsureInitialized();
+
+        if (!CanControl)
+        {
+            ClearCommands();
+            ActiveCharacter?.ClearFocus();
+
+            return;
+        }
+
+        int switchOffset = (input.NextCharacter.WasPressedThisFrame() ? 1 : 0)
+            - (input.PreviousCharacter.WasPressedThisFrame() ? 1 : 0);
+        int memberCount = PartyService.Instance != null ? PartyService.Instance.Members.Count : 1;
+        pendingSwitchOffset = (pendingSwitchOffset + switchOffset) % Mathf.Max(1, memberCount);
+
+        if (pendingSwitchOffset != 0 && !formation.IsMoving)
+        {
+            int requestedOffset = pendingSwitchOffset;
+            ClearCommands();
+            formation.TrySwitch(requestedOffset);
+            ActiveCharacter?.Scan();
+
+            return;
+        }
+
+        HandleMovement();
+        ActiveCharacter.Scan();
+
+        if (input.Interact.WasPressedThisFrame())
+        {
+            ActiveCharacter.TryInteract();
+        }
+    }
+
+    private void HandleMovement()
+    {
+        float deltaTime = Time.deltaTime;
         holdRepeatDelayTimer = Mathf.Max(0f, holdRepeatDelayTimer - deltaTime);
 
-        // Expire the previous command before accepting or executing input.
         if (bufferedInput != Vector2.zero)
         {
             bufferTimer -= deltaTime;
@@ -167,16 +212,11 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 requestedDirection = ReadDirection();
-        bool isNewInput = requestedDirection != Vector2.zero
-            && requestedDirection != previousInput;
-
-        // Remember releases too, so pressing the same direction again is new.
+        bool isNewInput = requestedDirection != Vector2.zero && requestedDirection != previousInput;
         previousInput = requestedDirection;
 
-        if (requestedDirection != Vector2.zero
-            && (isNewInput || holdRepeatDelayTimer <= 0f))
+        if (requestedDirection != Vector2.zero && (isNewInput || holdRepeatDelayTimer <= 0f))
         {
-            // The latest eligible request replaces the pending command.
             bufferedInput = requestedDirection;
             bufferTimer = Mathf.Max(0f, bufferTime);
 
@@ -186,18 +226,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // A pending command can execute even after the button is released.
-        MoveCharacter();
-    }
-
-    private void HandleInteractions()
-    {
-        if (controlsLockCount == 0 && input.enabled
-            && (UIService.Instance == null || !UIService.Instance.HasOpenUI)
-            && input.Interact.WasPressedThisFrame())
+        if (bufferedInput == Vector2.zero || formation.IsMoving || pendingSwitchOffset != 0
+            || !ActiveCharacter.Movement.isActiveAndEnabled)
         {
-            interactionController.TryInteract();
+
+            return;
         }
+
+        // Blocked attempts still turn the leader and consume the command.
+        formation.TryMove(bufferedInput);
+        ClearBuffer();
+        holdRepeatDelayTimer = Mathf.Max(0f, holdRepeatDelay);
     }
 
     private Vector2 ReadDirection()
@@ -208,49 +247,48 @@ public class PlayerController : MonoBehaviour
             return Vector2.zero;
         }
 
-        Vector2 moveValue = input.Move.ReadValue<Vector2>();
+        Vector2 value = input.Move.ReadValue<Vector2>();
 
-        if (moveValue.sqrMagnitude == 0f)
+        if (value.sqrMagnitude == 0f)
         {
 
             return Vector2.zero;
         }
 
-        // Compare cardinal directions, not small changes in stick magnitude.
-        if (Mathf.Abs(moveValue.y) >= Mathf.Abs(moveValue.x))
+        if (Mathf.Abs(value.y) >= Mathf.Abs(value.x))
         {
 
-            return new Vector2(0f, Mathf.Sign(moveValue.y));
+            return new Vector2(0f, Mathf.Sign(value.y));
         }
 
-        return new Vector2(Mathf.Sign(moveValue.x), 0f);
-    }
-
-    private void MoveCharacter()
-    {
-        if (bufferedInput == Vector2.zero)
-        {
-
-            return;
-        }
-
-        if (!movementController.TryMove(bufferedInput))
-        {
-
-            return;
-        }
-
-        targetDirection = bufferedInput;
-
-        ClearBuffer();
-
-        // Each accepted step starts a new delay for held-input repeats.
-        holdRepeatDelayTimer = Mathf.Max(0f, holdRepeatDelay);
+        return new Vector2(Mathf.Sign(value.x), 0f);
     }
 
     private void ClearBuffer()
     {
         bufferedInput = Vector2.zero;
         bufferTimer = 0f;
+    }
+
+    private void ClearCommands()
+    {
+        ClearBuffer();
+        previousInput = Vector2.zero;
+        holdRepeatDelayTimer = 0f;
+        pendingSwitchOffset = 0;
+    }
+
+    private void OnDisable()
+    {
+        if (inputService != null)
+        {
+            inputService.ContextChanged -= OnInputContextChanged;
+        }
+
+        inputService = null;
+        formation.StepComplete -= OnStepComplete;
+        formation.ActiveCharacterChanged -= OnActiveCharacterChanged;
+        ActiveCharacter?.ClearFocus();
+        ClearCommands();
     }
 }

@@ -1,0 +1,120 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="MenuStyles.uss" />
+    <ui:VisualElement name="ControlsScreen" class="controls-screen">
+        <ui:Label name="controls.title" class="controls-title" />
+        <ui:Label name="controls.keyboard" class="controls-scheme" />
+        <ui:Label name="controls.gamepad" class="controls-scheme" />
+        <ui:VisualElement class="inventory-tabs controls-tabs dark-panel" picking-mode="Ignore">
+            <ui:VisualElement name="ControlsGameTab" class="inventory-tab controls-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                <ui:Label name="controls.game" class="menu-item-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ControlsUITab" class="inventory-tab controls-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                <ui:Label name="controls.ui" class="menu-item-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ControlsDialogTab" class="inventory-tab controls-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                <ui:Label name="controls.dialog" class="menu-item-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="inventory-body controls-mappings dark-panel" picking-mode="Ignore">
+            <ui:VisualElement name="ControlsGameMappings" class="controls-category">
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.up" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.up" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.up" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:Label name="controls.interact" class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right">
+                        <ui:Label name="controls.keys.interact" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.south" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.down" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.down" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.down" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:Label name="controls.menu" class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right">
+                        <ui:Label name="controls.keys.menu" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.north" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.left" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.left" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.left" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right" />
+                </ui:VisualElement>
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.right" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.right" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.right" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right" />
+                </ui:VisualElement>
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.previousCharacter" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.previousCharacter" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.previousCharacter" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:Label name="controls.nextCharacter" class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right">
+                        <ui:Label name="controls.keys.nextCharacter" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.nextCharacter" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ControlsUIMappings" class="controls-category" style="display: none;">
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.navigate" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.move" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.navigate" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:Label name="controls.select" class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right">
+                        <ui:Label name="controls.keys.select" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.south" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.return" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.back" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.east" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ControlsDialogMappings" class="controls-category" style="display: none;">
+                <ui:VisualElement class="controls-row">
+                    <ui:Label name="controls.dialogContinue" class="controls-action controls-action-left" />
+                    <ui:VisualElement class="controls-binding controls-binding-left">
+                        <ui:Label name="controls.keys.interact" class="controls-keyboard-binding" />
+                        <ui:Label name="controls.pad.east" class="controls-gamepad-binding" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="controls-action controls-action-right" />
+                    <ui:VisualElement class="controls-binding controls-binding-right" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="controls-footer">
+            <ui:VisualElement name="ControlsContinueItem" class="sidebar-button" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label name="controls.continue" class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" focusable="false" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

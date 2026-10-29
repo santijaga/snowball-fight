@@ -12,6 +12,7 @@ public class DialogView : MonoBehaviour
     private Label dialogLabel;
     private UIService uiService;
     private string currentKey;
+    private Func<object[]> currentArguments;
     public bool IsOpen { get; private set; }
     public bool IsReady => dialogBox != null && dialogLabel != null;
     public event Action Hidden;
@@ -54,7 +55,7 @@ public class DialogView : MonoBehaviour
         dialogBox.style.display = IsOpen ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
-    public bool Show(string dialogKey)
+    public bool Show(string dialogKey, Func<object[]> arguments = null)
     {
         if (!isActiveAndEnabled || !IsReady || UIService.Instance == null || !GameLocalization.IsReady
             || string.IsNullOrWhiteSpace(dialogKey))
@@ -64,6 +65,7 @@ public class DialogView : MonoBehaviour
         }
 
         currentKey = dialogKey;
+        currentArguments = arguments;
         RefreshText();
         dialogBox.style.display = DisplayStyle.Flex;
         IsOpen = true;
@@ -76,6 +78,7 @@ public class DialogView : MonoBehaviour
     public void Hide()
     {
         currentKey = null;
+        currentArguments = null;
 
         if (dialogBox != null)
         {
@@ -103,7 +106,7 @@ public class DialogView : MonoBehaviour
     {
         if (isActiveAndEnabled && IsReady)
         {
-            dialogLabel.text = GameLocalization.Text(currentKey);
+            dialogLabel.text = GameLocalization.Text(currentKey, currentArguments?.Invoke() ?? Array.Empty<object>());
         }
     }
 }

@@ -6,12 +6,20 @@
                 <ui:Label name="InventoryMenuLabel" class="menu-item-label" picking-mode="Ignore" />
                 <ui:VisualElement class="menu-cursor" picking-mode="Ignore" focusable="false" />
             </ui:VisualElement>
+            <ui:VisualElement name="EquipmentMenuItem" class="sidebar-button" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label name="EquipmentMenuLabel" class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" focusable="false" />
+            </ui:VisualElement>
             <ui:VisualElement name="StatusMenuItem" class="sidebar-button" focusable="true" tabindex="-1" picking-mode="Ignore">
                 <ui:Label name="StatusMenuLabel" class="menu-item-label" picking-mode="Ignore" />
                 <ui:VisualElement name="MenuCursor" class="menu-cursor" picking-mode="Ignore" focusable="false" />
             </ui:VisualElement>
             <ui:VisualElement name="SettingsMenuItem" class="sidebar-button" focusable="true" tabindex="-1" picking-mode="Ignore">
                 <ui:Label name="SettingsMenuLabel" class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" focusable="false" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ControlsMenuItem" class="sidebar-button" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label name="ControlsMenuLabel" class="menu-item-label" picking-mode="Ignore" />
                 <ui:VisualElement class="menu-cursor" picking-mode="Ignore" focusable="false" />
             </ui:VisualElement>
         </ui:VisualElement>

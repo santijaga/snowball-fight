@@ -63,14 +63,155 @@ public sealed class PartyService : MonoBehaviour
         }
 
         readOnlyMembers = members.AsReadOnly();
-        members.Add(new PartyMember(startingCharacter.CharacterNameKey, startingCharacter.CharacterClass,
-            startingCharacter.InitialLevel, experienceTable, startingCharacter.Portrait));
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        InventoryService.EnsureCreated();
+
+        if (!TryAddMember(startingCharacter))
+        {
+            Debug.LogError("Unable to add the starting character and initial equipment.", this);
+        }
+    }
+
+    public bool SetCurrentAgility(PartyMember member, int value)
+    {
+        if (!CanChange(member))
+        {
+
+            return false;
+        }
+
+        member.SetCurrentAgility(value);
+        Changed?.Invoke();
+
+        return true;
+    }
+
+    public bool TryAddMember(PartyCharacterDefinition definition)
+    {
+        InventoryService inventory = InventoryService.Instance;
+
+        if (!isActiveAndEnabled || Instance != this || members.Count >= PartyRules.MaximumMembers
+            || definition == null || definition.CharacterClass == null
+            || string.IsNullOrWhiteSpace(definition.CharacterNameKey) || inventory == null)
+        {
+
+            return false;
+        }
+
+        ItemDefinition[] loadout = new ItemDefinition[6];
+
+        for (int index = 0; index < loadout.Length; index++)
+        {
+            EquipmentSlot slot = (EquipmentSlot)index;
+            loadout[index] = definition.GetInitialEquipment(slot);
+
+            if (loadout[index] != null && !loadout[index].Fits(slot))
+            {
+
+                return false;
+            }
+        }
+
+        if (loadout[0]?.IsTwoHanded == true && loadout[1] != null)
+        {
+
+            return false;
+        }
+
+        PartyMember member = new(definition.CharacterNameKey, definition.CharacterClass,
+            definition.InitialLevel, experienceTable, definition.Portrait, definition.CharacterPrefab);
+
+        return inventory.TryGrantEquipment(loadout, () =>
+        {
+            members.Add(member);
+
+            for (int index = 0; index < loadout.Length; index++)
+            {
+                member.SetEquipment((EquipmentSlot)index, loadout[index]);
+            }
+
+            Changed?.Invoke();
+        });
+    }
+
+    public int GetEquippedQuantity(string itemId)
+    {
+        if (string.IsNullOrWhiteSpace(itemId))
+        {
+
+            return 0;
+        }
+
+        int quantity = 0;
+
+        foreach (PartyMember member in members)
+        {
+            for (int index = 0; index < 6; index++)
+            {
+                if (member.GetEquipment((EquipmentSlot)index)?.Id == itemId)
+                {
+                    quantity++;
+                }
+            }
+        }
+
+        return quantity;
+    }
+
+    public bool TryEquip(PartyMember member, EquipmentSlot slot, ItemDefinition item)
+    {
+        InventoryService inventory = InventoryService.Instance;
+
+        if (!CanChange(member) || !Enum.IsDefined(typeof(EquipmentSlot), slot)
+            || inventory == null || !inventory.isActiveAndEnabled)
+        {
+
+            return false;
+        }
+
+        if (item != null && (!item.Fits(slot)
+            || !inventory.Database.TryGet(item.Id, out ItemDefinition known) || known != item))
+        {
+
+            return false;
+        }
+
+        if (member.GetEquipment(slot) == item)
+        {
+
+            return true;
+        }
+
+        if (item != null && inventory.GetAvailableQuantity(item.Id) < 1)
+        {
+
+            return false;
+        }
+
+        member.SetEquipment(slot, item);
+        Changed?.Invoke();
+        inventory.NotifyEquipmentChanged();
+
+        return true;
+    }
+
+    public bool SetCurrentStrength(PartyMember member, int value)
+    {
+        if (!CanChange(member))
+        {
+
+            return false;
+        }
+
+        member.SetCurrentStrength(value);
+        Changed?.Invoke();
+
+        return true;
     }
 
     // nameKey is an entry key in GameText, not a translated display name.
-    public bool TryAddMember(string nameKey, CharacterClassDefinition definition, int level, Sprite portrait = null)
+    public bool TryAddMember(string nameKey, CharacterClassDefinition definition, int level, Sprite portrait = null, Character characterPrefab = null)
     {
         if (!isActiveAndEnabled || Instance != this || members.Count >= PartyRules.MaximumMembers
             || string.IsNullOrWhiteSpace(nameKey) || definition == null)
@@ -79,7 +220,7 @@ public sealed class PartyService : MonoBehaviour
             return false;
         }
 
-        members.Add(new PartyMember(nameKey, definition, level, experienceTable, portrait));
+        members.Add(new PartyMember(nameKey, definition, level, experienceTable, portrait, characterPrefab));
         Changed?.Invoke();
 
         return true;
@@ -94,20 +235,7 @@ public sealed class PartyService : MonoBehaviour
         }
 
         Changed?.Invoke();
-
-        return true;
-    }
-
-    public bool SetCurrentStamina(PartyMember member, int value)
-    {
-        if (!CanChange(member))
-        {
-
-            return false;
-        }
-
-        member.SetCurrentStamina(value);
-        Changed?.Invoke();
+        InventoryService.Instance?.NotifyEquipmentChanged();
 
         return true;
     }
@@ -193,6 +321,8 @@ public sealed class PartyService : MonoBehaviour
         if (Instance == this)
         {
             Instance = null;
+            Changed?.Invoke();
+            InventoryService.Instance?.NotifyEquipmentChanged();
         }
     }
 }

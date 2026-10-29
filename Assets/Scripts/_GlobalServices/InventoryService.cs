@@ -32,7 +32,7 @@ public sealed class InventoryService : MonoBehaviour
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static void CreateInventory()
+    internal static void EnsureCreated()
     {
         if (Instance == null)
         {
@@ -54,21 +54,15 @@ public sealed class InventoryService : MonoBehaviour
             database = Resources.Load<ItemDatabase>("Inventory/Items");
         }
 
-        if (database == null || !database.IsValid()
-            || !database.TryGet("potion", out ItemDefinition potion)
-            || !database.TryGet("long_sword", out ItemDefinition sword)
-            || !database.TryGet("bronze_key", out ItemDefinition key))
+        if (database == null || !database.IsValid())
         {
-            Debug.LogError("InventoryService requires a valid Inventory/Items database with starting items.", this);
+            Debug.LogError("InventoryService requires a valid Inventory/Items database.", this);
             Destroy(gameObject);
 
             return;
         }
 
         readOnlyStacks = stacks.AsReadOnly();
-        stacks.Add(new Stack(potion, 5));
-        stacks.Add(new Stack(sword, 1));
-        stacks.Add(new Stack(key, 1));
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -76,7 +70,7 @@ public sealed class InventoryService : MonoBehaviour
     // Quantity zero removes the stack. New stacks are appended in acquisition order.
     public bool SetQuantity(string itemId, int quantity)
     {
-        if (!isActiveAndEnabled || Instance != this || quantity < 0
+        if (!isActiveAndEnabled || Instance != this || quantity < GetEquippedQuantity(itemId)
             || !database.TryGet(itemId, out ItemDefinition item))
         {
 
@@ -113,6 +107,143 @@ public sealed class InventoryService : MonoBehaviour
         }
 
         Changed?.Invoke();
+
+        return true;
+    }
+
+    public int GetQuantity(string itemId)
+    {
+
+        return stacks.Find(stack => stack.Item.Id == itemId)?.Quantity ?? 0;
+    }
+
+    public int GetEquippedQuantity(string itemId)
+    {
+
+        return PartyService.Instance != null ? PartyService.Instance.GetEquippedQuantity(itemId) : 0;
+    }
+
+    public int GetAvailableQuantity(string itemId)
+    {
+
+        return Math.Max(0, GetQuantity(itemId) - GetEquippedQuantity(itemId));
+    }
+
+    internal void NotifyEquipmentChanged()
+    {
+        Changed?.Invoke();
+    }
+
+    // Grant a character's whole loadout atomically, then publish the committed party and inventory.
+    internal bool TryGrantEquipment(ItemDefinition[] loadout, Action onCommitted)
+    {
+        if (!isActiveAndEnabled || Instance != this)
+        {
+
+            return false;
+        }
+
+        Dictionary<ItemDefinition, int> additions = new();
+
+        foreach (ItemDefinition item in loadout)
+        {
+            if (item == null)
+            {
+                continue;
+            }
+
+            if (!database.TryGet(item.Id, out ItemDefinition known) || known != item)
+            {
+
+                return false;
+            }
+
+            additions[item] = additions.TryGetValue(item, out int count) ? count + 1 : 1;
+        }
+
+        foreach (KeyValuePair<ItemDefinition, int> addition in additions)
+        {
+            if ((long)GetQuantity(addition.Key.Id) + addition.Value > int.MaxValue)
+            {
+
+                return false;
+            }
+        }
+
+        foreach (KeyValuePair<ItemDefinition, int> addition in additions)
+        {
+            Stack stack = stacks.Find(candidate => candidate.Item == addition.Key);
+
+            if (stack == null)
+            {
+                stacks.Add(new Stack(addition.Key, addition.Value));
+            }
+            else
+            {
+                stack.Quantity += addition.Value;
+            }
+        }
+
+        onCommitted();
+        Changed?.Invoke();
+
+        return true;
+    }
+
+    // Validate both sides before mutation; commit world state before notifying inventory observers.
+    internal bool TryExchange(ItemDefinition reward, int quantity, ItemDefinition required, bool consume,
+        Action onCommitted)
+    {
+        if (!isActiveAndEnabled || Instance != this || quantity < 0
+            || (quantity > 0 && (reward == null || !database.TryGet(reward.Id, out ItemDefinition knownReward)
+                || knownReward != reward))
+            || (required != null && (!database.TryGet(required.Id, out ItemDefinition knownRequired)
+                || knownRequired != required
+                || (consume ? GetAvailableQuantity(required.Id) : GetQuantity(required.Id)) < 1)))
+        {
+
+            return false;
+        }
+
+        Stack rewardStack = reward == null ? null : stacks.Find(stack => stack.Item == reward);
+        Stack costStack = required == null ? null : stacks.Find(stack => stack.Item == required);
+        int cost = consume && required != null ? 1 : 0;
+        long total = (long)(rewardStack?.Quantity ?? 0) + quantity - (reward == required ? cost : 0);
+
+        if (total > int.MaxValue)
+        {
+
+            return false;
+        }
+
+        if (cost > 0)
+        {
+            costStack.Quantity--;
+        }
+
+        if (quantity > 0)
+        {
+            if (rewardStack == null)
+            {
+                stacks.Add(new Stack(reward, quantity));
+            }
+            else
+            {
+                rewardStack.Quantity += quantity;
+            }
+        }
+
+        if (costStack != null && costStack.Quantity == 0)
+        {
+            stacks.Remove(costStack);
+        }
+
+        onCommitted?.Invoke();
+
+        if (quantity > 0 || cost > 0)
+        {
+            Changed?.Invoke();
+        }
 
         return true;
     }

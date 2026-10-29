@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: Darius
   m_EditorClassIdentifier: 
   characterNameKey: character.darius.name
-  characterClass: {fileID: 11400000, guid: a582d831f39e4ab0874397133170ec8b, type: 2}
+  characterClass: {fileID: 11400000, guid: 619a35871e2b4c27b5306e3154d51838, type: 2}
   initialLevel: 1
-  portrait: {fileID: 2382543463544445115, guid: 491aed9ee41b3044db810dfd979c0dca, type: 3}
+  portrait: {fileID: -6201857198974045655, guid: ec56540ee8ed292409a7ea33fc3520ff, type: 3}
+  initialWeapon: {fileID: 11400000, guid: 41583be267604b2bb3009745ee8ea703, type: 2}
+  initialArtifact: {fileID: 0}
+  initialAmulet: {fileID: 0}
+  initialRing1: {fileID: 0}
+  initialRing2: {fileID: 0}
+  initialTrinket: {fileID: 0}
+  characterPrefab: {fileID: 6600000000000000001, guid: baaddcc7b28b44f69d6a4b3bae97172b, type: 3}

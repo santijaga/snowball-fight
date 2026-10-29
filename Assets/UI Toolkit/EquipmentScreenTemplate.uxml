@@ -1,0 +1,74 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="MenuStyles.uss" />
+    <ui:VisualElement name="EquipmentScreen" class="status-screen" picking-mode="Ignore">
+        <ui:VisualElement class="status-tabs dark-panel" picking-mode="Ignore">
+            <ui:VisualElement name="EquipmentTab1" class="status-tab equipment-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="EquipmentTab2" class="status-tab equipment-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="EquipmentTab3" class="status-tab equipment-tab" focusable="true" tabindex="-1" picking-mode="Ignore">
+                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="equipment-body dark-panel" picking-mode="Ignore">
+            <ui:VisualElement class="equipment-main" picking-mode="Ignore">
+                <ui:VisualElement name="EquipmentPortraitHost" class="equipment-portrait-host" picking-mode="Ignore">
+                    <ui:Image name="EquipmentPortrait" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="equipment-main-content dark-panel" picking-mode="Ignore">
+                    <ui:VisualElement name="EquipmentSlots" class="equipment-slots" picking-mode="Ignore">
+                        <ui:VisualElement class="equipment-slot-row" picking-mode="Ignore">
+                            <ui:VisualElement name="EquipmentSlot0" class="equipment-slot" focusable="true" tabindex="-1" picking-mode="Ignore">
+                                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EquipmentSlot1" class="equipment-slot" focusable="true" tabindex="-1" picking-mode="Ignore">
+                                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="equipment-slot-row" picking-mode="Ignore">
+                            <ui:VisualElement name="EquipmentSlot2" class="equipment-slot" focusable="true" tabindex="-1" picking-mode="Ignore">
+                                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EquipmentSlot3" class="equipment-slot" focusable="true" tabindex="-1" picking-mode="Ignore">
+                                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="equipment-slot-row" picking-mode="Ignore">
+                            <ui:VisualElement name="EquipmentSlot4" class="equipment-slot" focusable="true" tabindex="-1" picking-mode="Ignore">
+                                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="EquipmentSlot5" class="equipment-slot" focusable="true" tabindex="-1" picking-mode="Ignore">
+                                <ui:Label class="menu-item-label" picking-mode="Ignore" />
+                                <ui:VisualElement class="menu-cursor" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:ScrollView name="EquipmentChoices" class="equipment-choices" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="EquipmentStats" class="equipment-stats dark-panel" picking-mode="Ignore">
+                <ui:VisualElement class="equipment-stat-row" picking-mode="Ignore">
+                    <ui:Label name="EquipmentStat0" class="status-label equipment-stat" picking-mode="Ignore" />
+                    <ui:Label name="EquipmentStat1" class="status-label equipment-stat" picking-mode="Ignore" />
+                    <ui:Label name="EquipmentStat2" class="status-label equipment-stat" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="equipment-stat-row" picking-mode="Ignore">
+                    <ui:Label name="EquipmentStat3" class="status-label equipment-stat" picking-mode="Ignore" />
+                    <ui:Label name="EquipmentStat4" class="status-label equipment-stat" picking-mode="Ignore" />
+                    <ui:Label name="EquipmentStat5" class="status-label equipment-stat" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label name="EquipmentDescription" class="inventory-description equipment-description dark-panel" picking-mode="Ignore" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

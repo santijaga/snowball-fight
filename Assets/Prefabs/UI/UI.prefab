@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8315806497730158401}
   - component: {fileID: 8315806497730158402}
   - component: {fileID: 8315806497730158403}
+  - component: {fileID: 8315806497730158404}
+  - component: {fileID: 8315806497730158405}
   m_Layer: 0
   m_Name: MenuPanel
   m_TagString: Untagged
@@ -397,3 +399,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44bb42bdf7d45a48f94865464df5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryPanelView
+--- !u!114 &8315806497730158404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285975194486052080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c584951ce5514bf0a99cf26fdc7a0611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlsPanelView
+--- !u!114 &8315806497730158405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285975194486052080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937d96ac516b40cfa630b303dd680f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipmentPanelView

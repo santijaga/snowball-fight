@@ -16,3 +16,4 @@ MonoBehaviour:
   nameKey: item.potion.name
   category: 0
   descriptionKey: item.potion.description
+  itemType: 0

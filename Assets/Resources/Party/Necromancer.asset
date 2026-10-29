@@ -1,0 +1,313 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c338bcf9af4d04b069ac52cec3d901, type: 3}
+  m_Name: Necromancer
+  m_EditorClassIdentifier: 
+  classNameKey: class.necromancer.name
+  levels:
+  - intellect: 3
+    strength: 2
+    agility: 2
+  - intellect: 4
+    strength: 3
+    agility: 3
+  - intellect: 4
+    strength: 3
+    agility: 3
+  - intellect: 5
+    strength: 4
+    agility: 4
+  - intellect: 6
+    strength: 4
+    agility: 4
+  - intellect: 7
+    strength: 5
+    agility: 5
+  - intellect: 7
+    strength: 5
+    agility: 5
+  - intellect: 8
+    strength: 6
+    agility: 6
+  - intellect: 9
+    strength: 6
+    agility: 6
+  - intellect: 10
+    strength: 7
+    agility: 7
+  - intellect: 10
+    strength: 7
+    agility: 7
+  - intellect: 11
+    strength: 8
+    agility: 8
+  - intellect: 12
+    strength: 8
+    agility: 8
+  - intellect: 13
+    strength: 9
+    agility: 9
+  - intellect: 13
+    strength: 10
+    agility: 10
+  - intellect: 14
+    strength: 10
+    agility: 10
+  - intellect: 15
+    strength: 11
+    agility: 11
+  - intellect: 15
+    strength: 11
+    agility: 11
+  - intellect: 16
+    strength: 12
+    agility: 12
+  - intellect: 17
+    strength: 12
+    agility: 12
+  - intellect: 18
+    strength: 13
+    agility: 13
+  - intellect: 18
+    strength: 13
+    agility: 13
+  - intellect: 19
+    strength: 14
+    agility: 14
+  - intellect: 20
+    strength: 14
+    agility: 14
+  - intellect: 21
+    strength: 15
+    agility: 15
+  - intellect: 21
+    strength: 16
+    agility: 16
+  - intellect: 22
+    strength: 16
+    agility: 16
+  - intellect: 23
+    strength: 17
+    agility: 17
+  - intellect: 24
+    strength: 17
+    agility: 17
+  - intellect: 24
+    strength: 18
+    agility: 18
+  - intellect: 25
+    strength: 18
+    agility: 18
+  - intellect: 26
+    strength: 19
+    agility: 19
+  - intellect: 27
+    strength: 19
+    agility: 19
+  - intellect: 27
+    strength: 20
+    agility: 20
+  - intellect: 28
+    strength: 20
+    agility: 20
+  - intellect: 29
+    strength: 21
+    agility: 21
+  - intellect: 29
+    strength: 21
+    agility: 21
+  - intellect: 30
+    strength: 22
+    agility: 22
+  - intellect: 31
+    strength: 23
+    agility: 23
+  - intellect: 32
+    strength: 23
+    agility: 23
+  - intellect: 32
+    strength: 24
+    agility: 24
+  - intellect: 33
+    strength: 24
+    agility: 24
+  - intellect: 34
+    strength: 25
+    agility: 25
+  - intellect: 35
+    strength: 25
+    agility: 25
+  - intellect: 35
+    strength: 26
+    agility: 26
+  - intellect: 36
+    strength: 26
+    agility: 26
+  - intellect: 37
+    strength: 27
+    agility: 27
+  - intellect: 38
+    strength: 27
+    agility: 27
+  - intellect: 38
+    strength: 28
+    agility: 28
+  - intellect: 39
+    strength: 28
+    agility: 28
+  - intellect: 40
+    strength: 29
+    agility: 29
+  - intellect: 40
+    strength: 30
+    agility: 30
+  - intellect: 41
+    strength: 30
+    agility: 30
+  - intellect: 42
+    strength: 31
+    agility: 31
+  - intellect: 43
+    strength: 31
+    agility: 31
+  - intellect: 43
+    strength: 32
+    agility: 32
+  - intellect: 44
+    strength: 32
+    agility: 32
+  - intellect: 45
+    strength: 33
+    agility: 33
+  - intellect: 46
+    strength: 33
+    agility: 33
+  - intellect: 46
+    strength: 34
+    agility: 34
+  - intellect: 47
+    strength: 34
+    agility: 34
+  - intellect: 48
+    strength: 35
+    agility: 35
+  - intellect: 49
+    strength: 36
+    agility: 36
+  - intellect: 49
+    strength: 36
+    agility: 36
+  - intellect: 50
+    strength: 37
+    agility: 37
+  - intellect: 51
+    strength: 37
+    agility: 37
+  - intellect: 51
+    strength: 38
+    agility: 38
+  - intellect: 52
+    strength: 38
+    agility: 38
+  - intellect: 53
+    strength: 39
+    agility: 39
+  - intellect: 54
+    strength: 39
+    agility: 39
+  - intellect: 54
+    strength: 40
+    agility: 40
+  - intellect: 55
+    strength: 40
+    agility: 40
+  - intellect: 56
+    strength: 41
+    agility: 41
+  - intellect: 57
+    strength: 41
+    agility: 41
+  - intellect: 57
+    strength: 42
+    agility: 42
+  - intellect: 58
+    strength: 43
+    agility: 43
+  - intellect: 59
+    strength: 43
+    agility: 43
+  - intellect: 60
+    strength: 44
+    agility: 44
+  - intellect: 60
+    strength: 44
+    agility: 44
+  - intellect: 61
+    strength: 45
+    agility: 45
+  - intellect: 62
+    strength: 45
+    agility: 45
+  - intellect: 63
+    strength: 46
+    agility: 46
+  - intellect: 63
+    strength: 46
+    agility: 46
+  - intellect: 64
+    strength: 47
+    agility: 47
+  - intellect: 65
+    strength: 47
+    agility: 47
+  - intellect: 65
+    strength: 48
+    agility: 48
+  - intellect: 66
+    strength: 49
+    agility: 49
+  - intellect: 67
+    strength: 49
+    agility: 49
+  - intellect: 68
+    strength: 50
+    agility: 50
+  - intellect: 68
+    strength: 50
+    agility: 50
+  - intellect: 69
+    strength: 51
+    agility: 51
+  - intellect: 70
+    strength: 51
+    agility: 51
+  - intellect: 71
+    strength: 52
+    agility: 52
+  - intellect: 71
+    strength: 52
+    agility: 52
+  - intellect: 72
+    strength: 53
+    agility: 53
+  - intellect: 73
+    strength: 53
+    agility: 53
+  - intellect: 74
+    strength: 54
+    agility: 54
+  - intellect: 74
+    strength: 54
+    agility: 54
+  - intellect: 75
+    strength: 55
+    agility: 55

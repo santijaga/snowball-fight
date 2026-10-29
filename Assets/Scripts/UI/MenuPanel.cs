@@ -8,16 +8,24 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(StatusPanelView))]
 [RequireComponent(typeof(SettingsPanelView))]
 [RequireComponent(typeof(InventoryPanelView))]
+[RequireComponent(typeof(ControlsPanelView))]
+[RequireComponent(typeof(EquipmentPanelView))]
 public sealed class MenuPanel : MonoBehaviour
 {
-    private enum Screen { Main, Inventory, Status, Settings }
+    private enum Screen { Main, Inventory, Equipment, Status, Settings, Controls }
 
     private PanelRenderer panelRenderer;
     private VisualElement menuBox;
     private VisualElement mainMenu;
-    private readonly VisualElement[] menuItems = new VisualElement[3];
+    private readonly VisualElement[] menuItems = new VisualElement[5];
+    private static bool startupControlsDismissed;
+    private bool startupControls;
+    private ControlsPanelView controlsView;
+    private Label controlsLabel;
     private Label inventoryLabel;
     private InventoryPanelView inventoryView;
+    private EquipmentPanelView equipmentView;
+    private Label equipmentLabel;
     private Label statusLabel;
     private Label settingsLabel;
     private StatusPanelView statusView;
@@ -32,15 +40,24 @@ public sealed class MenuPanel : MonoBehaviour
 
     public bool IsOpen { get; private set; }
     public bool IsInventoryOpen => IsOpen && screen == Screen.Inventory;
+    public bool IsEquipmentOpen => IsOpen && screen == Screen.Equipment;
     public bool IsStatusOpen => IsOpen && screen == Screen.Status;
     public bool IsSettingsOpen => IsOpen && screen == Screen.Settings;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStartupControls()
+    {
+        startupControlsDismissed = false;
+    }
 
     private void OnEnable()
     {
         panelRenderer = GetComponent<PanelRenderer>();
         inventoryView = GetComponent<InventoryPanelView>();
+        equipmentView = GetComponent<EquipmentPanelView>();
         statusView = GetComponent<StatusPanelView>();
         settingsView = GetComponent<SettingsPanelView>();
+        controlsView = GetComponent<ControlsPanelView>();
         GameLocalization.Changed += RefreshLabels;
         panelRenderer.RegisterUIReloadCallback(OnUIReload);
     }
@@ -52,12 +69,16 @@ public sealed class MenuPanel : MonoBehaviour
         mainMenu = menuBox?.Q<VisualElement>("MainMenu");
         menuItems[0] = mainMenu?.Q<VisualElement>("InventoryMenuItem");
         inventoryLabel = menuItems[0]?.Q<Label>("InventoryMenuLabel");
-        menuItems[1] = mainMenu?.Q<VisualElement>("StatusMenuItem");
-        menuItems[2] = mainMenu?.Q<VisualElement>("SettingsMenuItem");
-        statusLabel = menuItems[1]?.Q<Label>("StatusMenuLabel");
-        settingsLabel = menuItems[2]?.Q<Label>("SettingsMenuLabel");
+        menuItems[1] = mainMenu?.Q<VisualElement>("EquipmentMenuItem");
+        equipmentLabel = menuItems[1]?.Q<Label>("EquipmentMenuLabel");
+        menuItems[2] = mainMenu?.Q<VisualElement>("StatusMenuItem");
+        menuItems[3] = mainMenu?.Q<VisualElement>("SettingsMenuItem");
+        statusLabel = menuItems[2]?.Q<Label>("StatusMenuLabel");
+        settingsLabel = menuItems[3]?.Q<Label>("SettingsMenuLabel");
+        menuItems[4] = mainMenu?.Q<VisualElement>("ControlsMenuItem");
+        controlsLabel = menuItems[4]?.Q<Label>("ControlsMenuLabel");
 
-        if (menuBox == null || mainMenu == null || inventoryLabel == null || statusLabel == null || settingsLabel == null)
+        if (menuBox == null || mainMenu == null || inventoryLabel == null || equipmentLabel == null || statusLabel == null || settingsLabel == null || controlsLabel == null)
         {
             Debug.LogError("MenuPanel requires MenuBox, MainMenu and all menu items with labels.", this);
             Close();
@@ -66,8 +87,10 @@ public sealed class MenuPanel : MonoBehaviour
         }
 
         inventoryLabel.enableRichText = false;
+        equipmentLabel.enableRichText = false;
         statusLabel.enableRichText = false;
         settingsLabel.enableRichText = false;
+        controlsLabel.enableRichText = false;
         RefreshLabels();
         // Ignore every descendant: ignoring only the parent would still allow child picking.
         menuBox.pickingMode = PickingMode.Ignore;
@@ -87,17 +110,29 @@ public sealed class MenuPanel : MonoBehaviour
 
     private void RefreshLabels()
     {
-        if (isActiveAndEnabled && inventoryLabel != null && statusLabel != null && settingsLabel != null)
+        if (isActiveAndEnabled && inventoryLabel != null && equipmentLabel != null && statusLabel != null && settingsLabel != null && controlsLabel != null)
         {
             inventoryLabel.text = GameLocalization.Text("menu.inventory");
+            equipmentLabel.text = GameLocalization.Text("menu.equipment");
             statusLabel.text = GameLocalization.Text("menu.status");
             settingsLabel.text = GameLocalization.Text("menu.settings");
+            controlsLabel.text = GameLocalization.Text("menu.controls");
         }
     }
 
     private void RestoreScreen()
     {
-        if (screen == Screen.Inventory)
+        controlsView.Hide();
+        equipmentView.Hide();
+
+        if (screen == Screen.Equipment)
+        {
+            inventoryView.Hide();
+            statusView.Hide();
+            settingsView.Hide();
+            equipmentView.Show(false);
+        }
+        else if (screen == Screen.Inventory)
         {
             statusView.Hide();
             settingsView.Hide();
@@ -114,6 +149,13 @@ public sealed class MenuPanel : MonoBehaviour
             inventoryView.Hide();
             statusView.Hide();
             settingsView.Show();
+        }
+        else if (screen == Screen.Controls)
+        {
+            inventoryView.Hide();
+            statusView.Hide();
+            settingsView.Hide();
+            controlsView.Show(false);
         }
         else
         {
@@ -169,8 +211,10 @@ public sealed class MenuPanel : MonoBehaviour
     }
 
     private bool ViewsReady => inventoryView != null && inventoryView.isActiveAndEnabled && inventoryView.IsReady
+        && equipmentView != null && equipmentView.isActiveAndEnabled && equipmentView.IsReady
         && statusView != null && statusView.isActiveAndEnabled && statusView.IsReady
-        && settingsView != null && settingsView.isActiveAndEnabled && settingsView.IsReady;
+        && settingsView != null && settingsView.isActiveAndEnabled && settingsView.IsReady
+        && controlsView != null && controlsView.isActiveAndEnabled && controlsView.IsReady;
 
     private void OpenSelectedScreen()
     {
@@ -192,19 +236,43 @@ public sealed class MenuPanel : MonoBehaviour
         }
         else if (selectedItem == 1)
         {
+            screen = Screen.Equipment;
+            equipmentView.Show(true);
+        }
+        else if (selectedItem == 2)
+        {
             screen = Screen.Status;
             statusView.Show(true);
         }
-        else
+        else if (selectedItem == 3)
         {
             screen = Screen.Settings;
             settingsView.Show();
+        }
+        else
+        {
+            screen = Screen.Controls;
+            controlsView.Show();
         }
     }
 
     private void Back()
     {
+        if (startupControls)
+        {
+            startupControlsDismissed = true;
+            Close();
+
+            return;
+        }
+
         if (screen == Screen.Inventory && inventoryView.BackToTabs())
+        {
+
+            return;
+        }
+
+        if (screen == Screen.Equipment && equipmentView.BackToTabs())
         {
 
             return;
@@ -215,6 +283,8 @@ public sealed class MenuPanel : MonoBehaviour
             inventoryView.Hide();
             statusView.Hide();
             settingsView.Hide();
+            controlsView.Hide();
+            equipmentView.Hide();
             screen = Screen.Main;
             mainMenu.style.display = DisplayStyle.Flex;
             FocusSelectedItem();
@@ -245,8 +315,10 @@ public sealed class MenuPanel : MonoBehaviour
 
         Array.Clear(menuItems, 0, menuItems.Length);
         inventoryLabel = null;
+        equipmentLabel = null;
         statusLabel = null;
         settingsLabel = null;
+        controlsLabel = null;
         mainMenu = null;
     }
 
@@ -267,6 +339,32 @@ public sealed class MenuPanel : MonoBehaviour
                 if (inputService.Actions.UI.Back.WasPressedThisFrame())
                 {
                     Back();
+                }
+                else if (screen == Screen.Controls)
+                {
+                    if (inputService.Actions.UI.Select.WasPressedThisFrame())
+                    {
+                        if (controlsView.Select())
+                        {
+                            Back();
+                        }
+                    }
+                    else if (inputService.Actions.UI.Left.WasPressedThisFrame())
+                    {
+                        controlsView.MoveSelection(-1, 0);
+                    }
+                    else if (inputService.Actions.UI.Right.WasPressedThisFrame())
+                    {
+                        controlsView.MoveSelection(1, 0);
+                    }
+                    else if (inputService.Actions.UI.Up.WasPressedThisFrame())
+                    {
+                        controlsView.MoveSelection(0, -1);
+                    }
+                    else if (inputService.Actions.UI.Down.WasPressedThisFrame())
+                    {
+                        controlsView.MoveSelection(0, 1);
+                    }
                 }
                 else if (screen == Screen.Inventory)
                 {
@@ -289,6 +387,29 @@ public sealed class MenuPanel : MonoBehaviour
                     else if (inputService.Actions.UI.Down.WasPressedThisFrame())
                     {
                         inventoryView.MoveSelection(0, 1);
+                    }
+                }
+                else if (screen == Screen.Equipment)
+                {
+                    if (inputService.Actions.UI.Select.WasPressedThisFrame())
+                    {
+                        equipmentView.Select();
+                    }
+                    else if (inputService.Actions.UI.Left.WasPressedThisFrame())
+                    {
+                        equipmentView.MoveSelection(-1, 0);
+                    }
+                    else if (inputService.Actions.UI.Right.WasPressedThisFrame())
+                    {
+                        equipmentView.MoveSelection(1, 0);
+                    }
+                    else if (inputService.Actions.UI.Up.WasPressedThisFrame())
+                    {
+                        equipmentView.MoveSelection(0, -1);
+                    }
+                    else if (inputService.Actions.UI.Down.WasPressedThisFrame())
+                    {
+                        equipmentView.MoveSelection(0, 1);
                     }
                 }
                 else if (screen == Screen.Status)
@@ -334,6 +455,13 @@ public sealed class MenuPanel : MonoBehaviour
             return;
         }
 
+        if (!startupControlsDismissed)
+        {
+            Open(true);
+
+            return;
+        }
+
         InputContextService input = InputContextService.Instance;
 
         if (input != null && input.isActiveAndEnabled
@@ -345,6 +473,11 @@ public sealed class MenuPanel : MonoBehaviour
     }
 
     public void Open()
+    {
+        Open(false);
+    }
+
+    private void Open(bool showStartupControls)
     {
         if (!isActiveAndEnabled || IsOpen || changingState || menuBox == null || mainMenu == null
             || !ViewsReady || !GameLocalization.IsReady || panelRenderer == null || !panelRenderer.enabled
@@ -360,6 +493,9 @@ public sealed class MenuPanel : MonoBehaviour
         IsOpen = true;
         screen = Screen.Main;
         selectedItem = 0;
+        startupControls = showStartupControls;
+        controlsView.Hide();
+        equipmentView.Hide();
         inventoryView.Hide();
         statusView.Hide();
         settingsView.Hide();
@@ -380,7 +516,17 @@ public sealed class MenuPanel : MonoBehaviour
             contextHandle = context;
             menuBox.style.display = DisplayStyle.Flex;
             uiService.Register(this);
-            FocusSelectedItem();
+
+            if (showStartupControls && IsOpen && isActiveAndEnabled)
+            {
+                screen = Screen.Controls;
+                mainMenu.style.display = DisplayStyle.None;
+                controlsView.Show();
+            }
+            else
+            {
+                FocusSelectedItem();
+            }
         }
         catch
         {
@@ -403,9 +549,12 @@ public sealed class MenuPanel : MonoBehaviour
             item?.Blur();
         }
 
+        equipmentView?.Hide();
         inventoryView?.Hide();
         statusView?.Hide();
         settingsView?.Hide();
+        controlsView?.Hide();
+        startupControls = false;
         screen = Screen.Main;
 
         if (menuBox != null)

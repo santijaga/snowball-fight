@@ -6,17 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Bedroom.unity
-    guid: 23082e7a03780c24b84269911e5e665f
-  - enabled: 1
-    path: Assets/Scenes/Guestroom.unity
-    guid: bbce562f86db4e747a69d4e9d16daf70
-  - enabled: 1
     path: Assets/Scenes/Cathedral_Center.unity
     guid: bd258c050650d7940ae64bf8411837c4
   - enabled: 1
-    path: Assets/Scenes/Cathedral_North_West_Closet.unity
+    path: Assets/Scenes/Cathedral_North_East_Closet.unity
     guid: 9c48fadddb5a9e94eadf945c494fd789
+  - enabled: 1
+    path: Assets/Scenes/Cathedral_North_West_Room.unity
+    guid: 35b0565ed862f3c43b1d312caabfccaf
+  - enabled: 1
+    path: Assets/Scenes/Cathedral_Center_Room.unity
+    guid: 72cd56d1350fc1f40aacb07644066bf4
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f47bd6e0e56a56e43969aea60a9dfaa9, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

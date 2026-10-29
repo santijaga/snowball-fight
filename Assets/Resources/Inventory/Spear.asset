@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa0b64ada394085ae07520217fcf929, type: 3}
+  m_Name: Spear
+  m_EditorClassIdentifier: 
+  id: spear
+  nameKey: item.spear.name
+  category: 0
+  descriptionKey: item.spear.description
+  itemType: 1
+  slot: 0
+  handedness: 1
+  attack: 2

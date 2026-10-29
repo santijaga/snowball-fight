@@ -135,6 +135,394 @@ MonoBehaviour:
     m_Key: item.bronze_key.description
     m_Metadata:
       m_Items: []
+  - m_Id: 162120323125248
+    m_Key: dialog.chest.found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 162120386039808
+    m_Key: dialog.chest.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 162120386039809
+    m_Key: dialog.chest.locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324745988231168
+    m_Key: menu.controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562816
+    m_Key: controls.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562817
+    m_Key: controls.keyboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562818
+    m_Key: controls.gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562819
+    m_Key: controls.game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562820
+    m_Key: controls.ui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562821
+    m_Key: controls.dialog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562822
+    m_Key: controls.move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562823
+    m_Key: controls.interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562824
+    m_Key: controls.menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562825
+    m_Key: controls.navigate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562826
+    m_Key: controls.select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562827
+    m_Key: controls.return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562828
+    m_Key: controls.dialogContinue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562829
+    m_Key: controls.keys.move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562830
+    m_Key: controls.keys.interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562831
+    m_Key: controls.keys.menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562832
+    m_Key: controls.keys.select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562833
+    m_Key: controls.keys.back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562834
+    m_Key: controls.pad.move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562835
+    m_Key: controls.pad.south
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562836
+    m_Key: controls.pad.north
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562837
+    m_Key: controls.pad.navigate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562838
+    m_Key: controls.pad.east
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562839
+    m_Key: controls.continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562840
+    m_Key: controls.back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608727629824
+    m_Key: controls.up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961472
+    m_Key: controls.down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961473
+    m_Key: controls.left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961474
+    m_Key: controls.right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961475
+    m_Key: controls.keys.up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961476
+    m_Key: controls.keys.down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961477
+    m_Key: controls.keys.left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961478
+    m_Key: controls.keys.right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961479
+    m_Key: controls.pad.up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961480
+    m_Key: controls.pad.down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961481
+    m_Key: controls.pad.left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961482
+    m_Key: controls.pad.right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619054612480
+    m_Key: menu.equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915648
+    m_Key: item.scythe.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915649
+    m_Key: item.scythe.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915650
+    m_Key: status.strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915651
+    m_Key: status.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915652
+    m_Key: inventory.equipped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915653
+    m_Key: equipment.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915654
+    m_Key: equipment.remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915655
+    m_Key: equipment.available
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915656
+    m_Key: equipment.item_slot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915657
+    m_Key: equipment.one_handed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915658
+    m_Key: equipment.two_handed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915659
+    m_Key: equipment.attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915660
+    m_Key: equipment.slot.weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915661
+    m_Key: equipment.slot.artifact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915662
+    m_Key: equipment.slot.amulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915663
+    m_Key: equipment.slot.ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915664
+    m_Key: equipment.slot.ring1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915665
+    m_Key: equipment.slot.ring2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915666
+    m_Key: equipment.slot.trinket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085366996389888
+    m_Key: status.speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915840
+    m_Key: character.shaya.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915841
+    m_Key: class.hunter.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915842
+    m_Key: item.spear.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915843
+    m_Key: item.spear.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915844
+    m_Key: controls.nextCharacter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915845
+    m_Key: controls.previousCharacter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915846
+    m_Key: controls.keys.nextCharacter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915847
+    m_Key: controls.keys.previousCharacter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915848
+    m_Key: controls.pad.nextCharacter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915849
+    m_Key: controls.pad.previousCharacter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959845359616
+    m_Key: dialog.sequence.line
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662784
+    m_Key: dialog.shaya.introduction.01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662785
+    m_Key: dialog.shaya.introduction.02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662786
+    m_Key: dialog.shaya.introduction.03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662787
+    m_Key: dialog.shaya.introduction.04
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662788
+    m_Key: dialog.shaya.introduction.05
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662789
+    m_Key: dialog.shaya.introduction.06
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662790
+    m_Key: dialog.shaya.introduction.07
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662791
+    m_Key: dialog.shaya.introduction.08
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662792
+    m_Key: dialog.shaya.introduction.09
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662793
+    m_Key: dialog.shaya.introduction.10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662794
+    m_Key: dialog.shaya.introduction.11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662795
+    m_Key: dialog.shaya.introduction.12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662796
+    m_Key: dialog.shaya.introduction.13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662797
+    m_Key: dialog.shaya.introduction.14
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1201726493642752
+    m_Key: dialog.shaya.introduction.15
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1202824067502080
+    m_Key: item.rusty_key.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1202824067502081
+    m_Key: item.rusty_key.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1226484304138240
+    m_Key: dialog.unlock.used_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4087462964318208
+    m_Key: dialog.shaya.catch_up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4091672858546176
+    m_Key: dialog.shaya.catch_up.question
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4091672908877824
+    m_Key: dialog.shaya.catch_up.join
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4091672908877825
+    m_Key: dialog.shaya.catch_up.reply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4845788773830656
+    m_Key: class.necromancer.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5205139023810560
+    m_Key: status.agility
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -16,3 +16,4 @@ MonoBehaviour:
   nameKey: item.bronze_key.name
   category: 1
   descriptionKey: item.bronze_key.description
+  itemType: 0

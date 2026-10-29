@@ -16,3 +16,7 @@ MonoBehaviour:
   nameKey: item.long_sword.name
   category: 0
   descriptionKey: item.long_sword.description
+  itemType: 1
+  slot: 0
+  handedness: 0
+  attack: 3

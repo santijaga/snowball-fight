@@ -34,7 +34,11 @@ public sealed class ItemDatabase : ScriptableObject
         {
             if (item == null || string.IsNullOrWhiteSpace(item.Id) || string.IsNullOrWhiteSpace(item.NameKey)
                 || string.IsNullOrWhiteSpace(item.DescriptionKey) || !ids.Add(item.Id)
-                || !Enum.IsDefined(typeof(ItemCategory), item.Category))
+                || !Enum.IsDefined(typeof(ItemCategory), item.Category)
+                || !Enum.IsDefined(typeof(ItemType), item.Type)
+                || (item.Type == ItemType.Equipment && (item.Category != ItemCategory.Inventory
+                    || !Enum.IsDefined(typeof(ItemEquipmentSlot), item.Slot)
+                    || !Enum.IsDefined(typeof(WeaponHandedness), item.Handedness))))
             {
 
                 return false;

@@ -127,6 +127,9 @@ public sealed class InventoryPanelView : MonoBehaviour
             VisualElement cursor = new() { pickingMode = PickingMode.Ignore };
             cursor.AddToClassList("menu-cursor");
             cell.Add(cursor);
+            bool unavailable = stack.Item.Type == ItemType.Equipment
+                && inventory.GetAvailableQuantity(stack.Item.Id) == 0;
+            cell.EnableInClassList("inventory-item-unavailable", unavailable);
             Label name = new(GameLocalization.Text(stack.Item.NameKey))
             {
                 enableRichText = false, pickingMode = PickingMode.Ignore
@@ -262,7 +265,7 @@ public sealed class InventoryPanelView : MonoBehaviour
         }
 
         description.text = selectingItems && cells.Count > 0
-            ? GameLocalization.Text(visibleStacks[selectedItem].Item.DescriptionKey) : "";
+            ? visibleStacks[selectedItem].Item.GetDescription() : "";
         description.style.display = selectingItems && cells.Count > 0 ? DisplayStyle.Flex : DisplayStyle.None;
 
         if (!isActiveAndEnabled || !IsShown)

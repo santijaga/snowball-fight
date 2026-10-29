@@ -13,10 +13,10 @@ public static class PartyRules
         return Mathf.Clamp(value, MinimumStat, MaximumStat);
     }
 
-    public static int CalculateMaximumHealth(int stamina)
+    public static int CalculateMaximumHealth(int strength)
     {
-        double offset = ClampStat(stamina) - 5;
-        // Continue the curve below 5 without making lower stamina increase health.
+        double offset = ClampStat(strength) - 5;
+        // Continue the curve below 5 without making lower strength increase health.
         double health = 15 + 9984 * offset * System.Math.Abs(offset) / (94 * 94);
 
         return Mathf.Clamp((int)System.Math.Round(health, System.MidpointRounding.AwayFromZero), 1, 9999);

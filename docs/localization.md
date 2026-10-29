@@ -23,6 +23,7 @@
 ## Подключение к игровым объектам
 
 - В DialogProp назначается `dialogKey`, в Door — `lockedDialogKey`.
+- В Chest назначаются Found Dialog Key, Empty Dialog Key и Locked Dialog Key. Реплика находки получает {0} — локализованное имя предмета и {1} — количество. DialogService.TryShowDialog и DialogView.Show поддерживают необязательную функцию параметров, которая вызывается заново при обновлении языка/интерфейса.
 - В ItemDefinition назначаются Name Key и Description (ключ описания); переводы предметов находятся в GameText.json под item.<id>.name и item.<id>.description.
 - В PartyCharacterDefinition назначается `characterNameKey`, в CharacterClassDefinition — `classNameKey`.
 - `PartyService.TryAddMember` принимает ключ имени в аргументе `nameKey`; `DialogService.TryShowDialog` и `DialogView.Show` принимают ключ реплики.

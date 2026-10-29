@@ -118,6 +118,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Next Character"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a894150-8da6-4662-8ba0-a2ea4fd769ef"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Previous Character"",
+                    ""type"": ""Button"",
+                    ""id"": ""897ae7b2-fcc9-4d19-9409-18d0fea25b14"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -294,6 +312,50 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Open Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26a2055e-f1af-4c1e-9bbe-dafa6694fc99"",
+                    ""path"": ""<Keyboard>/rightBracket"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next Character"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""033c4c18-4c95-4d99-b5e2-5ecb7015bf24"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next Character"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14200bf5-c8b7-44fe-957c-9754bf69a99c"",
+                    ""path"": ""<Keyboard>/leftBracket"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Previous Character"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47541fb0-ee19-4cad-9327-88ff72fd5672"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Previous Character"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1179,6 +1241,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_OpenMenu = m_Player.FindAction("Open Menu", throwIfNotFound: true);
+        m_Player_NextCharacter = m_Player.FindAction("Next Character", throwIfNotFound: true);
+        m_Player_PreviousCharacter = m_Player.FindAction("Previous Character", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Down = m_UI.FindAction("Down", throwIfNotFound: true);
@@ -1283,6 +1347,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_OpenMenu;
+    private readonly InputAction m_Player_NextCharacter;
+    private readonly InputAction m_Player_PreviousCharacter;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1306,6 +1372,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/OpenMenu".
         /// </summary>
         public InputAction @OpenMenu => m_Wrapper.m_Player_OpenMenu;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/NextCharacter".
+        /// </summary>
+        public InputAction @NextCharacter => m_Wrapper.m_Player_NextCharacter;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/PreviousCharacter".
+        /// </summary>
+        public InputAction @PreviousCharacter => m_Wrapper.m_Player_PreviousCharacter;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1341,6 +1415,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @OpenMenu.started += instance.OnOpenMenu;
             @OpenMenu.performed += instance.OnOpenMenu;
             @OpenMenu.canceled += instance.OnOpenMenu;
+            @NextCharacter.started += instance.OnNextCharacter;
+            @NextCharacter.performed += instance.OnNextCharacter;
+            @NextCharacter.canceled += instance.OnNextCharacter;
+            @PreviousCharacter.started += instance.OnPreviousCharacter;
+            @PreviousCharacter.performed += instance.OnPreviousCharacter;
+            @PreviousCharacter.canceled += instance.OnPreviousCharacter;
         }
 
         /// <summary>
@@ -1361,6 +1441,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @OpenMenu.started -= instance.OnOpenMenu;
             @OpenMenu.performed -= instance.OnOpenMenu;
             @OpenMenu.canceled -= instance.OnOpenMenu;
+            @NextCharacter.started -= instance.OnNextCharacter;
+            @NextCharacter.performed -= instance.OnNextCharacter;
+            @NextCharacter.canceled -= instance.OnNextCharacter;
+            @PreviousCharacter.started -= instance.OnPreviousCharacter;
+            @PreviousCharacter.performed -= instance.OnPreviousCharacter;
+            @PreviousCharacter.canceled -= instance.OnPreviousCharacter;
         }
 
         /// <summary>
@@ -1822,6 +1908,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpenMenu(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Next Character" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNextCharacter(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Previous Character" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPreviousCharacter(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

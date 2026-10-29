@@ -509,11 +509,16 @@
     align-items: center;
     -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
     font-size: 30px;
-    color: rgb(242, 226, 226);
+    color: rgb(255, 255, 255);
 }
 
 .inventory-item:focus {
     color: rgb(255, 255, 255);
+}
+
+.inventory-item-unavailable .inventory-name,
+.inventory-item-unavailable .inventory-quantity {
+    color: rgb(128, 128, 128);
 }
 
 .inventory-name {
@@ -564,4 +569,242 @@
     font-size: 24px;
     color: rgb(242, 226, 226);
     white-space: normal;
+}
+
+.controls-screen-instance {
+    display: none;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 0;
+}
+
+.controls-screen {
+    flex-grow: 1;
+    min-height: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
+    font-size: 20px;
+    color: rgb(242, 226, 226);
+}
+
+.controls-title {
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    margin-bottom: 8px;
+}
+
+.controls-scheme {
+    -unity-text-align: middle-center;
+    margin-bottom: 12px;
+}
+
+.controls-tabs {
+    min-height: 100px;
+}
+
+.controls-tab {
+    width: 33.333%;
+    font-size: 24px;
+}
+
+.controls-mappings {
+    margin-bottom: 12px;
+}
+
+.controls-category {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+.controls-row {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 52px;
+    min-height: 52px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.controls-action {
+    flex-shrink: 0;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 8px;
+    -unity-text-align: middle-left;
+    white-space: normal;
+}
+
+.controls-action-left {
+    width: 18%;
+}
+
+.controls-action-right {
+    width: 23%;
+}
+
+.controls-binding {
+    flex-shrink: 0;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+.controls-binding-left {
+    width: 36%;
+}
+
+.controls-binding-right {
+    width: 23%;
+}
+
+.controls-keyboard-binding,
+.controls-gamepad-binding {
+    margin-left: 0;
+    padding-left: 0;
+    -unity-text-align: middle-left;
+    white-space: normal;
+}
+
+.controls-gamepad-binding {
+    display: none;
+}
+
+.controls-footer {
+    flex-shrink: 0;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.equipment-body {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 0;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.equipment-main {
+    flex-grow: 3;
+    flex-basis: 0;
+    min-height: 0;
+    flex-direction: row;
+}
+
+.equipment-portrait-host {
+    width: 20%;
+    min-width: 0;
+    min-height: 0;
+    align-items: center;
+    justify-content: center;
+    padding-right: 15px;
+}
+
+.equipment-main-content {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.equipment-slots {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 0;
+}
+
+.equipment-slot-row {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: row;
+}
+
+.equipment-slot {
+    min-width: 0;
+}
+
+.equipment-slot,
+.equipment-choice {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 0;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 40px;
+    -unity-font-definition: url("../Fonts/PressStart2P-Regular SDF 1.asset");
+    font-size: 24px;
+    color: rgb(242, 226, 226);
+}
+
+.equipment-choice {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    min-height: 60px;
+}
+
+.equipment-tab-selected,
+.equipment-slot:focus,
+.equipment-choice:focus {
+    color: rgb(255, 255, 255);
+}
+
+.equipment-tab:focus .menu-cursor,
+.equipment-slot:focus .menu-cursor,
+.equipment-choice:focus .menu-cursor {
+    display: flex;
+}
+
+.equipment-choices {
+    display: none;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.equipment-stats {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 0;
+    margin-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.equipment-stat-row {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 0;
+    flex-direction: row;
+}
+
+.equipment-stat {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 0;
+    font-size: 22px;
+}
+
+.equipment-description {
+    display: flex;
+    height: 160px;
+    min-height: 160px;
+    max-height: 160px;
+    flex-grow: 0;
+    flex-shrink: 0;
 }

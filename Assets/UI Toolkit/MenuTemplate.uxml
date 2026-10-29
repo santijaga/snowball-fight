@@ -3,6 +3,8 @@
     <ui:Template name="PartyPanel" src="project://database/Assets/UI%20Toolkit/PartyPanelTemplate.uxml?fileID=9197481963319205126&amp;guid=616e40d78417238498bdf2a891739f67&amp;type=3#PartyPanelTemplate" />
     <ui:Template name="StatusScreen" src="project://database/Assets/UI%20Toolkit/StatusScreenTemplate.uxml?fileID=9197481963319205126&amp;guid=b244edf137cc4ad6bf570f42cce9fa58&amp;type=3#StatusScreenTemplate" />
     <ui:Template name="InventoryScreen" src="project://database/Assets/UI%20Toolkit/InventoryScreenTemplate.uxml?fileID=9197481963319205126&amp;guid=f4738fa1d47e4b5ab9d295a60292509b&amp;type=3#InventoryScreenTemplate" />
+    <ui:Template name="ControlsScreen" src="project://database/Assets/UI%20Toolkit/ControlsScreenTemplate.uxml?fileID=9197481963319205126&amp;guid=abb1746f5e1846509ae27b482ba7f088&amp;type=3#ControlsScreenTemplate" />
+    <ui:Template name="EquipmentScreen" src="project://database/Assets/UI%20Toolkit/EquipmentScreenTemplate.uxml?fileID=9197481963319205126&amp;guid=e93c4c70ea414fb68e5efa7068c56eb7&amp;type=3#EquipmentScreenTemplate" />
     <Style src="MenuStyles.uss" />
     <ui:Template name="SettingsScreen" src="project://database/Assets/UI%20Toolkit/SettingsScreenTemplate.uxml?fileID=9197481963319205126&amp;guid=58c2baff0bf14f08bc1297d295c2e3aa&amp;type=3#SettingsScreenTemplate" />
     <ui:VisualElement name="MenuBox" class="menu-box dark-panel" style="display: none;">
@@ -11,7 +13,9 @@
             <ui:Instance template="PartyPanel" name="PartyPanelInstance" class="party-panel-instance" />
         </ui:VisualElement>
         <ui:Instance template="InventoryScreen" name="InventoryScreenInstance" class="inventory-screen-instance" />
+        <ui:Instance template="EquipmentScreen" name="EquipmentScreenInstance" class="status-screen-instance" />
         <ui:Instance template="StatusScreen" name="StatusScreenInstance" class="status-screen-instance" />
         <ui:Instance template="SettingsScreen" name="SettingsScreenInstance" class="settings-screen-instance" />
+        <ui:Instance template="ControlsScreen" name="ControlsScreenInstance" class="controls-screen-instance" />
     </ui:VisualElement>
 </ui:UXML>

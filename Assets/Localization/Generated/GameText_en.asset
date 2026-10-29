@@ -87,7 +87,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3846524941
-    m_Localized: 'Intellect: {0} / {1}'
+    m_Localized: 'Intellect: {0}'
     m_Metadata:
       m_Items: []
   - m_Id: 3846524942
@@ -136,6 +136,400 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 70407906742278
     m_Localized: An old bronze key.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 162120323125248
+    m_Localized: You found {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 162120386039808
+    m_Localized: Empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 162120386039809
+    m_Localized: Locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324745988231168
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562816
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562817
+    m_Localized: Keyboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562818
+    m_Localized: Gamepad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562819
+    m_Localized: Character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562820
+    m_Localized: Menus and panels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562821
+    m_Localized: Dialogs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562822
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562823
+    m_Localized: Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562824
+    m_Localized: Open menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562825
+    m_Localized: Navigate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562826
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562827
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562828
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562829
+    m_Localized: WASD / arrow keys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562830
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562831
+    m_Localized: Esc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562832
+    m_Localized: Enter / Space
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562833
+    m_Localized: Backspace / Esc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562834
+    m_Localized: Left stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562835
+    m_Localized: Bottom button (A / Cross)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562836
+    m_Localized: Top button (Y / Triangle)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562837
+    m_Localized: D-pad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562838
+    m_Localized: Right button (B / Circle)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562839
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324746038562840
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608727629824
+    m_Localized: Up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961472
+    m_Localized: Down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961473
+    m_Localized: Left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961474
+    m_Localized: Right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961475
+    m_Localized: W / Up arrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961476
+    m_Localized: S / Down arrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961477
+    m_Localized: A / Left arrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961478
+    m_Localized: D / Right arrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961479
+    m_Localized: Left stick up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961480
+    m_Localized: Left stick down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961481
+    m_Localized: Left stick left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349608777961482
+    m_Localized: Left stick right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619054612480
+    m_Localized: Equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915648
+    m_Localized: Scythe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915649
+    m_Localized: A scythe with a long shaft and a curved blade.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915650
+    m_Localized: 'Strength: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915651
+    m_Localized: 'Damage: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915652
+    m_Localized: 'Equipped: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915653
+    m_Localized: Empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915654
+    m_Localized: Unequip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915655
+    m_Localized: "{0} \u2014 available: {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915656
+    m_Localized: 'Slot: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915657
+    m_Localized: One-handed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915658
+    m_Localized: Two-handed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915659
+    m_Localized: 'Attack: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915660
+    m_Localized: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915661
+    m_Localized: Artifact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915662
+    m_Localized: Amulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915663
+    m_Localized: Ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915664
+    m_Localized: Ring 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915665
+    m_Localized: Ring 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777619125915666
+    m_Localized: Trinket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085366996389888
+    m_Localized: 'Speed: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915840
+    m_Localized: Shaya
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915841
+    m_Localized: Hunter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915842
+    m_Localized: Spear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915843
+    m_Localized: A spear with a long shaft and a sharp tip.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915844
+    m_Localized: Next character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915845
+    m_Localized: Previous character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915846
+    m_Localized: ']'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915847
+    m_Localized: '['
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915848
+    m_Localized: Right bumper (RB / R1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1085367050915849
+    m_Localized: Left bumper (LB / L1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959845359616
+    m_Localized: '{0}: {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662784
+    m_Localized: This room was locked. Who are you, and how did you get in here?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662785
+    m_Localized: My name is Shaya. I am a huntress from the south.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662786
+    m_Localized: When I found this room, the door was open.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662787
+    m_Localized: But when I stepped inside, the door slammed shut and would not budge
+      again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662788
+    m_Localized: Praise the Great Cheetah, I have been here for no more than an hour.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662789
+    m_Localized: And who are you, then?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662790
+    m_Localized: My name is Darius. I have come here on an errand for the Emperor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662791
+    m_Localized: And why has a huntress from the south come to the lands of the Empire?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662792
+    m_Localized: I cannot reveal my purpose to you. I swore to my elders that their
+      will would be kept secret.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662793
+    m_Localized: I am afraid I must insist that you at least come with me. I cannot
+      let you wander around here alone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662794
+    m_Localized: Ha. I do not need a protector.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662795
+    m_Localized: I am not trying to protect you. It will be easier for me to keep
+      an eye on you this way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662796
+    m_Localized: I have nothing to hide, and I am no enemy of yours as long as you
+      stay out of my affairs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1095959916662797
+    m_Localized: Then there will be no problems.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1201726493642752
+    m_Localized: Oh, by the way, I can feel a draft coming from the wall to my right.
+      It looks like there is something there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1202824067502080
+    m_Localized: Rusty Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1202824067502081
+    m_Localized: An old rusty Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1226484304138240
+    m_Localized: You used {0}. Unlocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4087462964318208
+    m_Localized: My skills are good, but not good enough for you to overlook me!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4091672858546176
+    m_Localized: And who are you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4091672908877824
+    m_Localized: I am coming with you. Staying here alone would be madness.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4091672908877825
+    m_Localized: As you wish. Just stay out of my way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4845788773830656
+    m_Localized: Necromancer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5205139023810560
+    m_Localized: 'Agility: {0}'
     m_Metadata:
       m_Items: []
   references:

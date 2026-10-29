@@ -29,8 +29,10 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="status-details dark-panel" picking-mode="Ignore">
-                <ui:Label name="StatusStamina" class="status-label" picking-mode="Ignore" />
+                <ui:Label name="StatusStrength" class="status-label" picking-mode="Ignore" />
+                <ui:Label name="StatusAgility" class="status-label" picking-mode="Ignore" />
                 <ui:Label name="StatusIntellect" class="status-label" picking-mode="Ignore" />
+                <ui:Label name="StatusDamage" class="status-label" picking-mode="Ignore" />
                 <ui:VisualElement name="StatusEffects" class="status-effects" picking-mode="Ignore" />
             </ui:VisualElement>
         </ui:VisualElement>

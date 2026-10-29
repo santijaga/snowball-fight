@@ -12,11 +12,11 @@ public sealed class TransitionPoint : MonoBehaviour
     [SerializeField] private string targetScene;
     [SerializeField] private SpawnFacingDirection facingDirection = SpawnFacingDirection.Down;
     [SerializeField] private Vector3 spawnOffset;
-    [SerializeField] private PlayerMovementController player;
+    [SerializeField] private PlayerController player;
     [Tooltip("A component implementing ISceneTransitionScreen, such as SceneRevealScreen.")]
     [SerializeField] private MonoBehaviour transitionScreen;
 
-    private PlayerMovementController subscribedPlayer;
+    private PlayerController subscribedPlayer;
     private SessionStateService activeSession;
     private Coroutine transitionRoutine;
     private IDisposable controlsLock;
@@ -31,7 +31,7 @@ public sealed class TransitionPoint : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("TransitionPoint requires a player movement controller.", this);
+            Debug.LogError("TransitionPoint requires a PlayerController.", this);
 
             return;
         }
@@ -59,7 +59,7 @@ public sealed class TransitionPoint : MonoBehaviour
         if (transitionScreen == null || !transitionScreen.isActiveAndEnabled
             || transitionScreen is not ISceneTransitionScreen screen
             || subscribedPlayer == null || !subscribedPlayer.isActiveAndEnabled
-            || !subscribedPlayer.TryGetComponent(out PlayerController controller) || !controller.isActiveAndEnabled)
+            || subscribedPlayer.ActiveCharacter == null)
         {
             Debug.LogError("TransitionPoint requires an active player and an active ISceneTransitionScreen component.", this);
 
@@ -85,7 +85,7 @@ public sealed class TransitionPoint : MonoBehaviour
 
         try
         {
-            controlsLock = controller.BlockControls();
+            controlsLock = subscribedPlayer.BlockControls();
 
             if (!isActiveAndEnabled || !transitioning)
             {
@@ -136,7 +136,7 @@ public sealed class TransitionPoint : MonoBehaviour
 
         if (transitionScreen == null || !transitionScreen.isActiveAndEnabled
             || subscribedPlayer == null || !subscribedPlayer.isActiveAndEnabled
-            || !subscribedPlayer.TryGetComponent(out PlayerController controller) || !controller.isActiveAndEnabled)
+            || subscribedPlayer.ActiveCharacter == null)
         {
             CancelTransition();
 
